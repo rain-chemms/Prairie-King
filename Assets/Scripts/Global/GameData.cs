@@ -15,6 +15,4 @@ public static class GameData
     public  static BootsType boots = BootsType.None;//靴子等级
     public static WeaponUpType weaponUp = WeaponUpType.None;//武器升级
     public static BulletType bullet = BulletType.None;//子弹等级,None代表未强化
-
-
 }
