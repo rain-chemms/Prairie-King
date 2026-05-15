@@ -7,6 +7,7 @@ public class RoleModel : AbstractModel
 {
     [SerializeField]/*[NonSerialized]*/ public Vector2 moveDirection = Vector2.zero;//移动方向
     [SerializeField] public float moveForce = 1f;//移动作用力
+    [SerializeField] public float rotateSpeed = 5f;//旋转速度
     [SerializeField] public float hp = 1f;//血量
     [SerializeField] public float damage = 1f;//伤害
     [SerializeField] public Rigidbody rb;
@@ -30,11 +31,15 @@ public class RoleModel : AbstractModel
     //移动函数
     //FixedUpdate()函数中调用
     public virtual void Move()
-    {
+    {        
         //将Role自身的方向设置为移动方向
-        rb.transform.forward = new Vector3(moveDirection.x ,transform.forward.y,moveDirection.y).normalized;
-        //添加作用力
-        rb.AddForce(rb.transform.forward * moveForce * Time.deltaTime);
+        Vector3 dir = new Vector3(moveDirection.x ,rb.transform.forward.y,moveDirection.y).normalized;
+        //在移动的情况下,添加作用力并修改角色方向
+        if(moveDirection != Vector2.zero)
+        {
+            rb.AddForce(dir * moveForce * Time.deltaTime);
+            rb.transform.forward = Vector3.Lerp(rb.transform.forward,dir,Time.deltaTime * rotateSpeed);
+        }
     }
 
     //接触伤害

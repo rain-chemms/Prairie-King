@@ -31,6 +31,7 @@ public class PlayerModel : RoleModel
         if(inputSystem == null) return false;
         playerControl = inputSystem.FindActionMap("PlayerControl");
         if(playerControl == null) return false;
+        playerControl.Enable();
         moveDown = playerControl.FindAction("MoveDown");
         moveLeft = playerControl.FindAction("MoveLeft");
         moveRight = playerControl.FindAction("MoveRight");
@@ -96,11 +97,19 @@ public class PlayerModel : RoleModel
         base.Update();
     }
 
+    //玩家移动时触发函数
+    void FixedUpdate()
+    {
+        Move();
+    }
+
     //玩家死亡时触发函数
     protected override void OnDeath()
     {
         openTouchDamage = false;
         animator.SetTrigger("Death");
+        //断开输入系统监听
+        if(playerControl!=null) playerControl.Disable();
         base.OnDeath();
     }
 
