@@ -7,6 +7,8 @@ public class PlayerModel : RoleModel
 {
     [Header("玩家属性")]
     [SerializeField] public float shootInterval = 0.3f;//射击间隔
+    [SerializeField] public Vector2 shootDirection = Vector2.zero;//射击方向
+    [SerializeField] protected bool isShoot = false;//是否正在射击
     [SerializeField] public Animator animator;//动画器
     //damage就是子弹的伤害
     [Header("玩家控制系统")]
@@ -81,6 +83,40 @@ public class PlayerModel : RoleModel
         {
             SetMoveDirection(new Vector2(0.0f,moveDirection.y));
         };
+        //上下射击
+        upShoot.performed += (context) =>
+        {
+            SetShootDirection(new Vector2(shootDirection.x,1.0f));
+        };
+        upShoot.canceled += (context) =>
+        {
+            SetShootDirection(new Vector2(shootDirection.x,0.0f));
+        };
+        downShoot.performed += (context) =>
+        {
+            SetShootDirection(new Vector2(shootDirection.x,-1.0f));
+        };
+        downShoot.canceled += (context) =>
+        {
+            SetShootDirection(new Vector2(shootDirection.x,0.0f));
+        };
+        //左右射击
+        leftShoot.performed += (context) =>
+        {
+            SetShootDirection(new Vector2(-1.0f,shootDirection.y));
+        };
+        leftShoot.canceled += (context) =>
+        {
+            SetShootDirection(new Vector2(0.0f,shootDirection.y));
+        };
+        rightShoot.performed += (context) =>
+        {
+            SetShootDirection(new Vector2(1.0f,shootDirection.y));
+        };
+        rightShoot.canceled += (context) =>
+        {
+            SetShootDirection(new Vector2(0.0f,shootDirection.y));
+        };
     }
 
     void Start()
@@ -94,6 +130,7 @@ public class PlayerModel : RoleModel
     new void Update()
     {
         AnimatorControl();
+        CheckShoot();
         base.Update();
     }
 
@@ -113,6 +150,13 @@ public class PlayerModel : RoleModel
         base.OnDeath();
     }
 
+    //实时进行isShoot判断
+    private void CheckShoot()
+    {
+        if(shootDirection != Vector2.zero) isShoot = true;
+        else isShoot = false;
+    }
+
     //控制玩家的动画器
     private void AnimatorControl()
     {
@@ -125,5 +169,19 @@ public class PlayerModel : RoleModel
         {
             animator.SetBool("IsMove",false);
         }
+        //射击动画控制
+        if(isShoot)
+        {
+            animator.SetBool("IsShoot",true);
+        }
+        else
+        {
+            animator.SetBool("IsShoot",false);
+        }
+    }
+
+    public void SetShootDirection(Vector2 direction)
+    {
+        shootDirection = direction;
     }
 }
