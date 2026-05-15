@@ -62,8 +62,19 @@ Assets/Scripts/
  Role/
   EnermyModel.cs
   Enermys/Enermy1.cs
-  PlayerModel.cs
+  Player/
+   PlayerModel.cs
+   PlayerValueCaculator.cs
+   PropTimeRecorder.cs
   RoleModel.cs
+ SceneObject/Collectable/
+  Goods.cs
+  Prop.cs
+ SceneObject/
+  CollectableObjectModel.cs
+  SceneObjectModel.cs
+  Uncollectable/Bullet.cs
+  UncollectableObjectModel.cs
 Temp/obj/Debug/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]

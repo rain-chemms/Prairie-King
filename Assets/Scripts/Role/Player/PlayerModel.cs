@@ -1,10 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerModel : RoleModel
+public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder
 {
+    //接口属性实现
+    //PropTimeRecorder
+    public Dictionary<PropType,float> propTimeRemainder {get;set;} = new Dictionary<PropType,float>();
+    //PlayerValueCaculator
+    public float baseDamage {get;} = 1f;
+    public float baseShootInterval {get;}= 0.3f;
+    public float baseMoveForce {get;}= 1000f;
     [Header("玩家属性")]
     [SerializeField] public float shootInterval = 0.3f;//射击间隔
     [SerializeField] public Vector2 shootDirection = Vector2.zero;//射击方向
@@ -129,6 +137,13 @@ public class PlayerModel : RoleModel
     // Update is called once per frame
     new void Update()
     {
+        //优先检查数值
+        NowDamage();
+        NowMoveForce();
+        NowShootInterval();
+        //道具时间流动
+        PropTimeFlow();
+        //动画与射击检测
         AnimatorControl();
         CheckShoot();
         base.Update();
@@ -183,5 +198,122 @@ public class PlayerModel : RoleModel
     public void SetShootDirection(Vector2 direction)
     {
         shootDirection = direction;
+    }
+
+    //接口的实现
+    //PropTimeRecorder接口
+    public bool AddPropTime(PropType propType,float addTime)
+    {
+        if(propTimeRemainder == null) return false;
+        if(propTimeRemainder.ContainsKey(propType)) propTimeRemainder[propType] += addTime;
+        else propTimeRemainder.Add(propType,addTime);
+        return true;
+    }
+
+    public bool PropTimeFlow()
+    {
+        if(propTimeRemainder == null) return false;
+        foreach(var item in propTimeRemainder)
+        {
+            propTimeRemainder[item.Key] -= Time.deltaTime;
+            if(propTimeRemainder[item.Key] <= 0) propTimeRemainder.Remove(item.Key);
+        }
+        return true;
+    }
+
+    public bool SetPropTime(PropType propType,float time)
+    {
+        if(propTimeRemainder == null) return false;
+        if(propTimeRemainder.ContainsKey(propType)) propTimeRemainder[propType] = time;
+        else propTimeRemainder.Add(propType,time);
+        return true;
+    }
+    //PlayerValueCaculator接口
+    public float NowDamage()
+    {
+        //检索强化列表
+        damage = baseDamage;
+        switch(GameData.bullet)
+        {
+            case BulletType.Bullet_1:
+                damage += 1.0f;
+                break;
+            case BulletType.Bullet_2:
+                damage += 2.0f;
+                break;
+            case BulletType.Bullet_3:
+                damage += 5.0f;
+                break;
+            case BulletType.Bullet_4:
+                damage += 11.0f;
+                break;
+            case BulletType.None:
+            default:
+                break;
+        }
+        return damage;
+    }
+
+    public float NowMoveForce()
+    {
+        moveForce = baseMoveForce;
+        float rate = 1.0f;//提速倍率
+        //检索强化列表
+        switch(GameData.boots)
+        {
+            case BootsType.Boots_1:
+                rate += 0.25f;
+                break;
+            case BootsType.Boots_2:
+                rate += 0.5f;
+                break;
+            case BootsType.None:
+            default:
+                break;
+        }
+        //Coffee道具
+        if(propTimeRemainder.ContainsKey(PropType.Coffee))
+        {
+            if(rate < 1.5f) rate = 1.5f;
+        }
+        //Tomb道具
+        if(propTimeRemainder.ContainsKey(PropType.Tomb))
+        {
+            rate += 0.75f;
+        }
+        moveForce *= rate;
+        return moveForce;
+    }
+
+    public float NowShootInterval()
+    {
+        shootInterval = baseShootInterval;
+        float rate = 1.0f;//Timeout倍率
+        //检索强化列表
+        switch(GameData.weaponUp)
+        {
+            case WeaponUpType.WeaponUp_1:
+                rate += 0.25f;
+                break;
+            case WeaponUpType.WeaponUp_2:
+                rate += 0.5f;
+                break;
+            case WeaponUpType.WeaponUp_3:
+                rate += 0.75f;
+                break;
+            case WeaponUpType.WeaponUp_4:
+                rate += 1.0f;
+                break;
+            case WeaponUpType.None:
+            default:
+                break;
+        }
+        //MachineGun道具
+        if(propTimeRemainder.ContainsKey(PropType.MachineGun))
+        {
+            if(rate < 3.0f) rate = 3.0f;
+        }
+        shootInterval /= rate;
+        return shootInterval;
     }
 }

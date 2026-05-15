@@ -31,8 +31,6 @@ public enum BootsType
     None,//没有靴子装备
     Boots_1,//靴子等级1
     Boots_2,//靴子等级2
-    Boots_3,//靴子等级3
-    Boots_4//靴子等级4
 }
 
 //子弹类型: 增加攻击力
