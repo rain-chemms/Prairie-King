@@ -4,10 +4,58 @@ using UnityEngine;
 
 public class Prop : CollectableObjectModel
 {
+    [SerializeField] private float haveInsistTime = 5.0f;
+    [SerializeField] private float blinkInterval = 0.5f;//模型闪烁间隔
+    [SerializeField] private bool isBlink = false;//模型是否闪烁
     [SerializeField] public float persisitTime = 15.0f;//道具存在时间,超过后消失
     [SerializeField] public float propEffectTime = 10.0f;//道具拾取后持续时间
     [SerializeField] public PropType propType = PropType.OneCoin;//道具类型
     [SerializeField] public Animator animator = null;///道具动画器
+    [SerializeField] public Transform model = null;//道具模型,用于在最后剩余5s钟内使模型闪烁
+    
+    void Start()
+    {
+        if(model == null) model = transform.GetChild(0);//获取模型    
+        haveInsistTime = 0.0f;
+    }
+
+    void Update()
+    {
+        haveInsistTime += Time.deltaTime;
+        if(haveInsistTime > persisitTime)
+        {
+            PlayerOverPersistTimeAnimation();
+        }
+        CheckModelBlink();
+        JustBlink();
+    }
+
+    //道具闪烁函数
+    private float blinkTimeRecorder = 0.0f; 
+    private void JustBlink()
+    {
+        if(model == null) return;
+        if(isBlink)
+        {
+            blinkTimeRecorder += Time.deltaTime;
+            if(blinkTimeRecorder >= blinkInterval)
+            {
+                model.gameObject.SetActive(!model.gameObject.activeSelf);
+                blinkTimeRecorder = 0.0f;
+            }
+        }
+        else {
+            blinkTimeRecorder = 0.0f;
+            model.gameObject.SetActive(true);
+        }
+    }
+    //模型闪烁检测函数
+    public void CheckModelBlink()
+    {
+        if(haveInsistTime >= persisitTime - 5.0f) isBlink = true;
+        else isBlink = false;
+    }
+
     public override void AfterCollect(PlayerModel collectPlayer)
     {
         base.AfterCollect(collectPlayer);
@@ -59,7 +107,12 @@ public class Prop : CollectableObjectModel
         return true;
     }
 
-    public virtual void PlayerCollectedAnimation()
+    protected virtual void PlayerOverPersistTimeAnimation()
+    {
+        animator.SetTrigger("OverPersistTime");
+    }
+
+    protected virtual void PlayerCollectedAnimation()
     {
         animator.SetTrigger("Collected");
     }
