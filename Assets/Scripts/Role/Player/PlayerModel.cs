@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -213,7 +214,7 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder
     public bool PropTimeFlow()
     {
         if(propTimeRemainder == null) return false;
-        foreach(var item in propTimeRemainder)
+        foreach(KeyValuePair<PropType,float> item in propTimeRemainder.ToList())
         {
             propTimeRemainder[item.Key] -= Time.deltaTime;
             if(propTimeRemainder[item.Key] <= 0) propTimeRemainder.Remove(item.Key);

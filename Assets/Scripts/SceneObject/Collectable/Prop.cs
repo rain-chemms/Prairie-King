@@ -13,7 +13,7 @@ public class Prop : CollectableObjectModel
         base.AfterCollect(collectPlayer);
         if(GameData.prop == PropType.None) GameData.prop = propType;
         else EffectOnPlayer(collectPlayer);
-        //TriggerDestoryAnimation();
+        PlayerCollectedAnimation();
         //Destroy(gameObject);
     }
 
@@ -57,5 +57,10 @@ public class Prop : CollectableObjectModel
                 break;
         }
         return true;
+    }
+
+    public virtual void PlayerCollectedAnimation()
+    {
+        animator.SetTrigger("Collected");
     }
 }

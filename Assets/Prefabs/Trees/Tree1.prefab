@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8468769414707027334}
   - component: {fileID: 8641147135148559948}
   - component: {fileID: 434943974075363130}
-  m_Layer: 0
+  - component: {fileID: 7422768554843974973}
+  m_Layer: 8
   m_Name: Tree1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,6 +83,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.8870802, y: 10.824408, z: 4.0801854}
   m_Center: {x: -0.023041725, y: 0.80275226, z: -0.028624296}
+--- !u!114 &7422768554843974973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3149672036256258526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5543785258515713272
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5318039612455124555}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,6 +197,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3927e683b6409b44697764a785a60b9b, type: 3}
       propertyPath: m_Name
       value: Tree1Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3927e683b6409b44697764a785a60b9b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnermyModel : RoleModel
 {
+    //智能体导航器
+    [SerializeField] public NavMeshAgent agent = null; 
     protected Transform targetPlayer = null;//目标玩家的位置
     //寻找目标玩家
     //Start()函数中调用
@@ -23,15 +26,16 @@ public class EnermyModel : RoleModel
 
     //追赶目标玩家
     //计算moveDirection
-    //Update()函数中调用
-    public virtual void FollowPlayer()
+    //Update()函数中调用,返回目标的世界坐标位置
+    public virtual Vector3 FollowPlayer()
     {
-        if(targetPlayer == null) return;
+        if(targetPlayer == null) return transform.position;
         Vector3 tar = Vector3.zero; 
         tar = (targetPlayer.position - transform.position).normalized;
         //2.5D游戏,需要x和z值
         moveDirection.x = tar.x;//获取x
         moveDirection.y = tar.z;//获取z
+        return targetPlayer.transform.position;
     }
 
     //产生随机道具掉落物
@@ -92,4 +96,13 @@ public class EnermyModel : RoleModel
         SearchPlayer();
     }
 
+    //智能体移动
+    public virtual void Move_Agent()
+    {
+        Vector3 tar = FollowPlayer();
+        if(agent!=null)
+        {
+            agent.SetDestination(tar);
+        }
+    }
 }

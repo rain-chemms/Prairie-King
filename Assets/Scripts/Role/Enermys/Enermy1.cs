@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class Enermy1 : EnermyModel
@@ -13,9 +14,8 @@ public class Enermy1 : EnermyModel
 
     void FixedUpdate()
     {
-        Move();
+        Move_Agent();
     }
-
     protected override void OnDeath()
     {
         openTouchDamage = false;//死亡后不能造成接触伤害
