@@ -11,9 +11,10 @@ public class Prop : CollectableObjectModel
     public override void AfterCollect(PlayerModel collectPlayer)
     {
         base.AfterCollect(collectPlayer);
-        EffectOnPlayer(collectPlayer);
+        if(GameData.prop == PropType.None) GameData.prop = propType;
+        else EffectOnPlayer(collectPlayer);
         //TriggerDestoryAnimation();
-            //Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public bool EffectOnPlayer(PlayerModel effectPlayer)
@@ -42,9 +43,9 @@ public class Prop : CollectableObjectModel
                 break;
             //星星比较特殊,是设置三个已有的技能事件
             case PropType.Star:
-                effectPlayer.SetPropTime(PropType.MachineGun,propEffectTime);
-                effectPlayer.SetPropTime(PropType.ShotGun,propEffectTime);
-                effectPlayer.SetPropTime(PropType.Coffee,propEffectTime);
+                    effectPlayer.SetPropTime(PropType.MachineGun,propEffectTime);
+                    effectPlayer.SetPropTime(PropType.ShotGun,propEffectTime);
+                    effectPlayer.SetPropTime(PropType.Coffee,propEffectTime);
                 break;
             case PropType.Nuclear://核弹:对所有敌人造成500伤害
                 EnermyModel[] enermies = FindObjectsOfType<EnermyModel>();
