@@ -39,46 +39,61 @@ public class EnermyModel : RoleModel
     }
 
     //产生随机道具掉落物
+    [SerializeField] public PropGenerator propGenerator = null;//道具生成器
+    [SerializeField] public bool canDropProp = true;//是否可以掉落道具
     public virtual void DropProp()
     {
+        if(propGenerator == null) return;//道具生成器为空时不能产生道具
+        if(!canDropProp) return;
         //产生一个0到1之间的小数
-        float random = Random.Range(0, 1);
+        float random = Random.Range(0.0f, 1.0f);
         //random > 0.65 时,产生道具,> 0.6时产生一个1元金币
+        Prop newProp = null;
+        List<PropType> canGeneratePropList = new List<PropType>();
         switch(random)
         {
             case > 0.9f:
                 //Random
-                //GenerateProp<Star>()
-                //GenerateProp<LifeCoin>()
+                canGeneratePropList.Add(PropType.FiveCoin);
+                canGeneratePropList.Add(PropType.LifeCoin);
+                canGeneratePropList.Add(PropType.Star);
                 break;
             case > 0.8f:
-                //Random
-                //GenerateProp<Tomb>()
-                //GenerateProp<Nuclear>()
-                //GenerateProp<SmokeBomb>()
-                //GenerateProp<Wheel>()
-                //GenerateProp<FiveCoin>()
-                //GenerateProp<MachineGun>()
+                canGeneratePropList.Add(PropType.Tomb);
+                canGeneratePropList.Add(PropType.Nuclear);
+                canGeneratePropList.Add(PropType.SmokeBomb);
+                canGeneratePropList.Add(PropType.Wheel);
+                canGeneratePropList.Add(PropType.MachineGun);
+                canGeneratePropList.Add(PropType.ShotGun);
+                canGeneratePropList.Add(PropType.Coffee);
                 break;
             case > 0.65f:
                 //Random
-                //GenerateProp<ShotGun>()
-                //GenerateProp<Coffee>()>()
+                canGeneratePropList.Add(PropType.ShotGun);
+                canGeneratePropList.Add(PropType.Coffee);
+                canGeneratePropList.Add(PropType.OneCoin);
                 break;
             case > 0.6f:
-                //Random
-                //GenerateProp<OneCoin>()
+                canGeneratePropList.Add(PropType.OneCoin);
                 break;
             default:
                 break;
         }   
-        
+        //Debug.Log("random:"+ random +"|Count :" + canGeneratePropList.Count);
+        if(canGeneratePropList.Count > 0)
+            newProp = propGenerator.GenerateProp(canGeneratePropList[Random.Range(0, canGeneratePropList.Count)]);
+        if(newProp != null)
+        {    
+            newProp.transform.position = transform.position;
+            Debug.Log("[EnermyModel]:Drop Prop "+ newProp.propType.ToString());
+        }
     }
     
     //
     protected override void OnDeath()
     {
         DropProp();
+        agent.enabled = false;//死亡后不能移动,关闭智能体导航
         base.OnDeath();
     }
 
@@ -100,7 +115,7 @@ public class EnermyModel : RoleModel
     public virtual void Move_Agent()
     {
         Vector3 tar = FollowPlayer();
-        if(agent!=null)
+        if(agent!=null && agent.enabled)
         {
             agent.SetDestination(tar);
         }

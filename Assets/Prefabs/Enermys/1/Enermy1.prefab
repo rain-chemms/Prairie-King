@@ -84,6 +84,8 @@ MonoBehaviour:
   rb: {fileID: 4868172582906062302}
   openTouchDamage: 1
   agent: {fileID: 4096774722050251902}
+  propGenerator: {fileID: 8402082390948811459, guid: 126f1227e15d8d546ac9cee34d66f6a9, type: 3}
+  canDropProp: 1
   animator: {fileID: 7936099953066504942}
 --- !u!136 &1274227365081494558
 CapsuleCollider:
@@ -141,16 +143,16 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 6
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 180
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1.76
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &8775406701744527171

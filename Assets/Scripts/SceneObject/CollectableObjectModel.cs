@@ -18,5 +18,10 @@ public class CollectableObjectModel : SceneObjectModel
 
     //玩家拾取后会产生的效果
     public virtual void AfterCollect(PlayerModel collectPlayer)
-    {}
+    {
+        //拾取后禁用自身碰撞体
+        CloseAllCollider();
+    }
+
+
 }

@@ -5,7 +5,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder
+public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropUser
 {
     //接口属性实现
     //PropTimeRecorder
@@ -125,6 +125,11 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder
         rightShoot.canceled += (context) =>
         {
             SetShootDirection(new Vector2(0.0f,shootDirection.y));
+        };
+        //使用道具
+        useProp.performed += (context) =>
+        {
+            UseProp();
         };
     }
 
@@ -316,5 +321,25 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder
         }
         shootInterval /= rate;
         return shootInterval;
+    }
+    //PropUser接口
+    public PropType GetBackPackPropType()
+    {
+        return GameData.prop;
+    }
+    //道具使用器
+    public void UseProp()
+    {
+        if(GameData.prop == PropType.None) return;
+        //创建一个空物体并触发使用效果,之后删除该游戏物体
+        GameObject propTemp = new GameObject("PropTemp");
+        Prop prop = propTemp.AddComponent<Prop>();
+        prop.propType = GetBackPackPropType();
+        prop.EffectOnPlayer(this);
+        //输出使用效果
+        Debug.Log("[PlayerModel PropUser]:"+"Use Prop:"+prop.propType);
+        Destroy(propTemp);
+        //重置道具
+        GameData.prop = PropType.None;
     }
 }

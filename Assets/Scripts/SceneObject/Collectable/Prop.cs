@@ -59,8 +59,19 @@ public class Prop : CollectableObjectModel
     public override void AfterCollect(PlayerModel collectPlayer)
     {
         base.AfterCollect(collectPlayer);
-        if(GameData.prop == PropType.None) GameData.prop = propType;
-        else EffectOnPlayer(collectPlayer);
+        //直接生效->存储到背包->背包满触发
+        Debug.Log("[Prop]:"+"Collect Prop:"+propType);
+        if(propType == PropType.OneCoin || propType==PropType.FiveCoin || propType==PropType.LifeCoin) 
+        {
+            EffectOnPlayer(collectPlayer);
+            Debug.Log("[Prop]:"+"Prop is Reward:"+propType);
+        }
+        else if(GameData.prop == PropType.None) GameData.prop = propType;
+        else 
+        {
+            EffectOnPlayer(collectPlayer);
+            Debug.Log("[Prop]:"+"BackPack Full,Use Prop:"+propType);
+        }
         PlayerCollectedAnimation();
         //Destroy(gameObject);
     }
@@ -99,6 +110,7 @@ public class Prop : CollectableObjectModel
                 EnermyModel[] enermies = FindObjectsOfType<EnermyModel>();
                 foreach(EnermyModel enermy in enermies)
                 {
+                    enermy.canDropProp = false;//被核弹杀死不可掉落道具
                     enermy.BeHurt(500);
                 }
                 //TriggerAnimation();

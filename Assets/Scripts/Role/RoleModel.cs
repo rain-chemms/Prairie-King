@@ -9,9 +9,17 @@ public class RoleModel : AbstractModel
     [SerializeField] public float moveForce = 1f;//移动作用力
     [SerializeField] public float rotateSpeed = 5f;//旋转速度
     [SerializeField] public float hp = 1f;//血量
+    
     [SerializeField] public float damage = 1f;//伤害
     [SerializeField] public Rigidbody rb;
     [SerializeField] public bool openTouchDamage = false;//是否开启接触伤害
+    
+    //获取当前血量
+    public float GetHp()
+    {
+        return hp;
+    }
+    
     //受伤函数
     public virtual void BeHurt(float damage)
     {
@@ -65,11 +73,16 @@ public class RoleModel : AbstractModel
     {}
 
     //更新函数
+    private bool haveTriggerDeath = false;
     protected void Update()
     {
         if(IsDeath())
         {
-            OnDeath();
+            if(!haveTriggerDeath)
+            {
+                haveTriggerDeath = true;
+                OnDeath();
+            }
         }
     } 
 }

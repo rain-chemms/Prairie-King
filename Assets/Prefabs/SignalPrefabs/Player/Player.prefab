@@ -129,7 +129,7 @@ MonoBehaviour:
   rb: {fileID: 7217200196978266999}
   openTouchDamage: 0
   shootInterval: 0.3
-  shootDirection: {x: 0, y: 1}
+  shootDirection: {x: 0, y: 0}
   isShoot: 0
   animator: {fileID: 4245795390160224864}
   inputSystem: {fileID: -944628639613478452, guid: 5daef280a84984148b3b3c1bc3d1c6d3, type: 3}
