@@ -28,6 +28,8 @@ public class RoleModel : AbstractModel
         {
             hp = 0.0f;
         }
+        //触发随机的HitEffect
+        AudioManager.instance.TriggerHitEffect();
     }
 
     //设置移动方向

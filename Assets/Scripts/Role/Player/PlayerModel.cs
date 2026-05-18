@@ -202,6 +202,7 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         bool isTripleBlt = false;
         if(propTimeRemainder.ContainsKey(PropType.Wheel)) isEightDir = true;
         if(propTimeRemainder.ContainsKey(PropType.ShotGun) || propTimeRemainder.ContainsKey(PropType.Star)) isTripleBlt = true;
+        //射击实现块
         {
             int times = isEightDir ? 8 : 1;
             for(int i = 0; i < times; i++)
@@ -232,6 +233,8 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
                 }
                 else GenerateBullet(dirRotation);
             }
+            //触发随机射击音效
+            AudioManager.instance.TriggerShootEffect();
             //重置射击间隔
             shootIntervalRecorder = 0f;
         }

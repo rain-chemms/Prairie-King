@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,6 +59,32 @@ public class Prop : CollectableObjectModel
 
     public override void AfterCollect(PlayerModel collectPlayer)
     {
+        //依据道具类型设置音频文件
+        String audioName = null;
+        switch(propType)
+        {
+            case PropType.Star:
+                audioName = "StarPickUp";
+                break;
+            case PropType.ShotGun:
+            case PropType.MachineGun:
+            case PropType.Wheel:
+                audioName = "GunPickUp";
+                break;
+            case PropType.Coffee:
+            case PropType.SmokeBomb:
+            case PropType.Tomb:
+            case PropType.Nuclear: 
+                audioName = "GadgetPickUp";
+                break;
+            case PropType.FiveCoin:
+            case PropType.OneCoin:
+            case PropType.LifeCoin:
+            default:
+                audioName = "CoinPickUp";
+                break;
+        }
+        AudioManager.instance.ChangeCollectClip(audioName);
         base.AfterCollect(collectPlayer);
         //直接生效->存储到背包->背包满触发
         Debug.Log("[Prop]:"+"Collect Prop:"+propType);
@@ -113,6 +140,9 @@ public class Prop : CollectableObjectModel
                     enermy.canDropProp = false;//被核弹杀死不可掉落道具
                     enermy.BeHurt(500);
                 }
+                //触发核弹音效
+                AudioManager.instance.ChangePropEffectClip("NuclearBomb");
+                AudioManager.instance.TriggerPropEffect();
                 //TriggerAnimation();
                 break;
         }
