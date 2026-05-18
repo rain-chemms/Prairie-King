@@ -133,6 +133,7 @@ MonoBehaviour:
   isShoot: 0
   animator: {fileID: 4245795390160224864}
   inputSystem: {fileID: -944628639613478452, guid: 5daef280a84984148b3b3c1bc3d1c6d3, type: 3}
+  bullet: {fileID: 4053369933735059246, guid: 5851f885b08b9a940ba8cb0454b6cef5, type: 3}
 --- !u!1 &9218704665403319827
 GameObject:
   m_ObjectHideFlags: 0

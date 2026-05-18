@@ -11,6 +11,16 @@ public class Bullet : UncollectableObjectModel
     [SerializeField] public float force = 1.0f;//子弹的作用力,决定子弹飞行的速度
     [SerializeField] public Vector3 direction = Vector3.zero;//子弹的飞行方向
     [SerializeField] public Animator animator = null;//子弹的动画器
+    
+    public void SetBulletData(Vector3 direction,bool isPlayerSide = false, float flyTime = 5.0f, float damage = 1.0f, bool resetForce = false,float force = 500.0f)
+    {
+        this.direction = direction;
+        this.isPlayerSide = isPlayerSide;
+        this.flyTime = flyTime;
+        this.damage = damage;
+        if(resetForce) this.force = force;
+    }
+
     void Start()
     {
         haveFlyTime = 0.0f;//重置已经飞行时间
@@ -34,7 +44,7 @@ public class Bullet : UncollectableObjectModel
     private void BulletFly()
     {
         if(rb == null) return;
-        rb.AddForce(direction * force * Time.deltaTime);
+        rb.AddForce(direction.normalized * force * Time.deltaTime);
     }
     
     private bool CheckBulletTimeOver()
@@ -61,7 +71,7 @@ public class Bullet : UncollectableObjectModel
     protected virtual void TriggerOverAnimation()
     {
         if(animator == null) return;
-        
+        animator.SetTrigger("IsOver");
     }
 
     //子弹碰撞

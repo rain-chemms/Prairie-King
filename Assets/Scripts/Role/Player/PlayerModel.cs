@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,11 +13,11 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
     public Dictionary<PropType,float> propTimeRemainder {get;set;} = new Dictionary<PropType,float>();
     //PlayerValueCaculator
     public float baseDamage {get;} = 1f;
-    public float baseShootInterval {get;}= 0.3f;
+    public float baseShootInterval {get;}= 0.33f;
     public float baseMoveForce {get;}= 1000f;
     [Header("玩家属性")]
-    [SerializeField] public float shootInterval = 0.3f;//射击间隔
-    [SerializeField] public Vector2 shootDirection = Vector2.zero;//射击方向
+    [SerializeField] private float shootInterval = 0.5f;//射击间隔
+    [SerializeField] private Vector2 shootDirection = Vector2.zero;//射击方向
     [SerializeField] protected bool isShoot = false;//是否正在射击
     [SerializeField] public Animator animator;//动画器
     //damage就是子弹的伤害
@@ -152,6 +153,7 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         //动画与射击检测
         AnimatorControl();
         CheckShoot();
+        Shoot();
         base.Update();
     }
 
@@ -172,10 +174,81 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
     }
 
     //实时进行isShoot判断
+    [SerializeField] public Bullet bullet;//子弹预制体
     private void CheckShoot()
     {
-        if(shootDirection != Vector2.zero) isShoot = true;
-        else isShoot = false;
+        if(shootDirection != Vector2.zero) 
+        {
+            isShoot = true;
+        }
+        else 
+        {
+            isShoot = false;
+        }
+    }
+    //设计实现
+    private float shootIntervalRecorder = 0f;
+    protected virtual void Shoot()
+    {
+        if(!isShoot)
+        {
+            shootIntervalRecorder = shootInterval;
+            return;
+        }
+        shootIntervalRecorder += Time.deltaTime;
+        //射击间隔未达到时无法开火
+        if(shootIntervalRecorder < shootInterval) return;
+        bool isEightDir = false;
+        bool isTripleBlt = false;
+        if(propTimeRemainder.ContainsKey(PropType.Wheel)) isEightDir = true;
+        if(propTimeRemainder.ContainsKey(PropType.ShotGun) || propTimeRemainder.ContainsKey(PropType.Star)) isTripleBlt = true;
+        {
+            int times = isEightDir ? 8 : 1;
+            for(int i = 0; i < times; i++)
+            {
+                Quaternion dirRotation = Quaternion.identity;
+                dirRotation = Quaternion.Euler(0, i * 45f, 0);
+                if(isTripleBlt)
+                {
+                    for(int j = 0; j < 3; j++)
+                    {
+                        int idx = 0;
+                        switch(j)
+                        {
+                            case 1:
+                                idx = 1;
+                                break;
+                            case 2:
+                                idx = -1;
+                                break;
+                            case 0:
+                            default:
+                                idx = 0;
+                                break;
+                        }
+                        Quaternion appendDir = Quaternion.Euler(0.0f,idx * 20.0f,0.0f);
+                        GenerateBullet(dirRotation * appendDir);
+                    }
+                }
+                else GenerateBullet(dirRotation);
+            }
+            //重置射击间隔
+            shootIntervalRecorder = 0f;
+        }
+    }
+
+    //产生单个子弹
+    private Bullet GenerateBullet(Quaternion rotation)
+    {
+        //创建子弹
+        Bullet newBullet = Instantiate(bullet); 
+        //设置子弹数据
+        if(bullet!=null) 
+        {
+            newBullet.transform.position = transform.position;
+            newBullet.SetBulletData(rotation * new Vector3(shootDirection.x,0.0f,shootDirection.y),true,5.0f,damage);   
+        }
+        return newBullet;
     }
 
     //控制玩家的动画器

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6263343425577826574}
   - component: {fileID: 1450239311417185542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,9 +65,9 @@ GameObject:
   - component: {fileID: 8749500920092469442}
   - component: {fileID: 6626262231819459281}
   - component: {fileID: 2821896762349838083}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stake
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,9 +182,73 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8556770415360228214, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -6685974664416032935, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -6510995911725105414, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -5509864925121120058, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4622794290896648135, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2172542720153841152, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1320984855220587724, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1085023052173154173, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
       propertyPath: m_Name
       value: StakeModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564728630749925950, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671751055343132244, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189665716834196500, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3947380042506718500, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634908681324285411, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069888985567568324, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399874346936717772, guid: a101f4b2f3806da47b8c59beb5df48e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
