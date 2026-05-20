@@ -14,9 +14,9 @@ public class EnermyGenerator : AbstractGenerator<EnermyType,EnermyModel>
         {
             if(prefab.enermyType == enermyType)
             {
-                newEnermy = Instantiate(prefab,transform);
+                newEnermy = Instantiate(prefab,productManager?.transform);
                 SetProductPosition(newEnermy);
-                newEnermy.transform.parent = null;
+                productManager?.Add(newEnermy);
             }
         }
         return newEnermy;

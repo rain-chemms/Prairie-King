@@ -6,6 +6,15 @@ using UnityEngine.UIElements;
 
 public class AbstractGenerator<Source,Product> : AbstractModel where Source : Enum where Product : MonoBehaviour
 {
+    [SerializeField] public ProductManager<Product> productManager;//产品管理器,所有的产品都会存放在管理器中,管理器为空时,产品会直接生成在根节点上
+    public ProductManager<Product> GetProductManager()
+    {
+        return productManager;
+    }
+    public void SetProductManager(ProductManager<Product> productManager)
+    {
+        this.productManager = productManager;
+    }
     [SerializeField] public List<Product> productPrefabs = new List<Product>(); 
     //使用列别查找
     public virtual Product Generate(Source source)
@@ -23,9 +32,9 @@ public class AbstractGenerator<Source,Product> : AbstractModel where Source : En
         {
             if(prefab.name.Equals(productName))
             {
-                newProduct = Instantiate(prefab,transform);
+                newProduct = Instantiate(prefab,productManager?.transform);
                 SetProductPosition(newProduct);
-                newProduct.transform.parent = null;
+                productManager?.Add(newProduct);
             }
         }
         return newProduct;

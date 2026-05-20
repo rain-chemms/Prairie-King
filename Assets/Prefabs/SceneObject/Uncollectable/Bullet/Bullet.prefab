@@ -342,7 +342,8 @@ MonoBehaviour:
   isPlayerSide: 1
   flyTime: 5
   damage: 1
-  force: 1200
+  force: 50
+  velocityModel: 1
   direction: {x: 1, y: 1, z: 1}
   animator: {fileID: 4584346309316000242}
 --- !u!95 &4584346309316000242

@@ -1,12 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting.FullSerializer;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropUser
+public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropUser,PlayerVfxExpender
 {
     //接口属性实现
     //PropTimeRecorder
@@ -150,6 +147,9 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         NowShootInterval();
         //道具时间流动
         PropTimeFlow();
+        FunctionPropEffect();//道具效果
+        //显示特效
+        DisplayVfx();
         //动画与射击检测
         AnimatorControl();
         CheckShoot();
@@ -302,6 +302,19 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         }
         return true;
     }
+    
+    [SerializeField] private bool isInvisible = false;//是否隐身
+    [SerializeField] private bool isZombieState = false;//是否为僵尸化
+    protected void FunctionPropEffect()
+    {
+        isZombieState = propTimeRemainder.ContainsKey(PropType.Tomb);
+        isInvisible = propTimeRemainder.ContainsKey(PropType.SmokeBomb);
+        if(isInvisible || isZombieState)
+        {
+            isInvulnerable = true;//僵尸化或隐身时无敌
+        }
+        else isInvulnerable = false;
+    }
 
     public bool SetPropTime(PropType propType,float time)
     {
@@ -418,4 +431,23 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         //重置道具
         GameData.prop = PropType.None;
     }
+    //PlayerVfxExpender接口
+    //主显示:显示基础+接口新增特效
+    public void DisplayVfx()
+    {
+        
+    }
+    //子显示:显示隐身特效
+    public void InvisiableVfxDisplay()
+    {
+        if(isInvisible)
+        {
+            
+        }
+    }
+    public void ZombieStateVfxDisplay()
+    {
+        
+    }
+
 }

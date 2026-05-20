@@ -13,6 +13,7 @@ public class RoleModel : AbstractModel
     [SerializeField] public float damage = 1f;//伤害
     [SerializeField] public Rigidbody rb;
     [SerializeField] public bool openTouchDamage = false;//是否开启接触伤害
+    [SerializeField] public bool isInvulnerable = false;//是否无敌
     
     //获取当前血量
     public float GetHp()
@@ -23,6 +24,7 @@ public class RoleModel : AbstractModel
     //受伤函数
     public virtual void BeHurt(float damage)
     {
+        if(isInvulnerable) return;
         hp -= damage;
         if (hp <= 0)
         {

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class PropGenerator : AbstractGenerator<PropType,Prop>
@@ -16,9 +15,9 @@ public class PropGenerator : AbstractGenerator<PropType,Prop>
         {
             if(prefab.propType == propType)
             {
-                newProp = Instantiate(prefab);
+                newProp = Instantiate(prefab,productManager?.transform);
                 SetProductPosition(newProp);
-                newProp.transform.parent = null;
+                productManager?.Add(newProp);
             }
         }
         return newProp;

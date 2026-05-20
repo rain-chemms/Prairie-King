@@ -9,6 +9,7 @@ public class Bullet : UncollectableObjectModel
     private float haveFlyTime = 0.0f;//已经飞行时间
     [SerializeField] public float damage = 1.0f;//子弹的伤害
     [SerializeField] public float force = 1.0f;//子弹的作用力,决定子弹飞行的速度
+    [SerializeField] private bool velocityModel = true;//是否使用速度模式
     [SerializeField] public Vector3 direction = Vector3.zero;//子弹的飞行方向
     [SerializeField] public Animator animator = null;//子弹的动画器
     
@@ -44,7 +45,9 @@ public class Bullet : UncollectableObjectModel
     private void BulletFly()
     {
         if(rb == null) return;
-        rb.AddForce(direction.normalized * force * Time.deltaTime);
+        if(velocityModel)
+            rb.velocity = direction.normalized * force; 
+        else rb.AddForce(direction.normalized * force * Time.deltaTime,ForceMode.VelocityChange);
     }
     
     private bool CheckBulletTimeOver()
