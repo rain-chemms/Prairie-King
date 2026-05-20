@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2440536441275713801}
   - component: {fileID: 4096774722050251902}
   m_Layer: 6
-  m_Name: Enermy1
+  m_Name: GreenSlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,6 +83,7 @@ MonoBehaviour:
   damage: 1
   rb: {fileID: 4868172582906062302}
   openTouchDamage: 1
+  enermyType: 1
   agent: {fileID: 4096774722050251902}
   propGenerator: {fileID: 8402082390948811459, guid: 126f1227e15d8d546ac9cee34d66f6a9, type: 3}
   canDropProp: 1
@@ -457,7 +458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d4aed39394133af43a8ca2e22abd4626, type: 3}
       propertyPath: m_Name
-      value: Enermy1
+      value: Enermy1Model
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d4aed39394133af43a8ca2e22abd4626, type: 3}
       propertyPath: m_Layer

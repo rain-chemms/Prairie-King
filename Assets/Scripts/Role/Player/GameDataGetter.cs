@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameDataGetter : MonoBehaviour
 {
     [SerializeField] public ChapterType chapter = ChapterType.Chapter_1;//玩家所在的章节
-    [SerializeField] public LevelType level = LevelType.Level_1;//玩家所在章节的地几关卡
+    [SerializeField] public uint level = 0;//玩家所在章节的地几关卡
     //上面两个变量用于初始化确认玩家的生成位置+摄像机的放置位置
     //玩家持有的道具
     [SerializeField] public PropType prop = PropType.None;

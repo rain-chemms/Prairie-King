@@ -8,17 +8,6 @@ public enum ChapterType
     Chapter_1,
     Chapter_2
 }
-
-//关卡类型:目前设置四关+Boss关,关卡中若没有对应LevelType,则默认为Level_1
-public enum LevelType
-{
-    Level_1,
-    Level_2,
-    Level_3,
-    Level_4,
-    Level_Boss
-}
-
 /*
     三种强化的枚举
         靴子: 增加移速
@@ -72,4 +61,10 @@ public enum PropType
     LifeCoin,//生命币道具: 玩家的剩余命条数+1
     OneCoin,//金币道具: 玩家金币数+1,拾取时触发
     FiveCoin//5元金币道具: 玩家金币数+5,拾取时触发    
+}
+
+public enum EnermyType
+{
+    None,
+    GreenSlayer,
 }

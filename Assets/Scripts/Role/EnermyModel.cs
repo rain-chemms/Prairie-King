@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class EnermyModel : RoleModel
 {
+    //敌人种类
+    [SerializeField] public EnermyType enermyType = EnermyType.None;
     //智能体导航器
     [SerializeField] public NavMeshAgent agent = null; 
     protected Transform targetPlayer = null;//目标玩家的位置
@@ -29,13 +31,13 @@ public class EnermyModel : RoleModel
     //Update()函数中调用,返回目标的世界坐标位置
     public virtual Vector3 FollowPlayer()
     {
-        if(targetPlayer == null) return transform.position;
-        Vector3 tar = Vector3.zero; 
+        Vector3 tar = transform.position;
+        if(targetPlayer == null) return tar;
         tar = (targetPlayer.position - transform.position).normalized;
         //2.5D游戏,需要x和z值
         moveDirection.x = tar.x;//获取x
         moveDirection.y = tar.z;//获取z
-        return targetPlayer.transform.position;
+        return targetPlayer.position;
     }
 
     //产生随机道具掉落物
@@ -81,7 +83,7 @@ public class EnermyModel : RoleModel
         }   
         //Debug.Log("random:"+ random +"|Count :" + canGeneratePropList.Count);
         if(canGeneratePropList.Count > 0)
-            newProp = propGenerator.GenerateProp(canGeneratePropList[Random.Range(0, canGeneratePropList.Count)]);
+            newProp = propGenerator.Generate(canGeneratePropList[Random.Range(0, canGeneratePropList.Count)]);
         if(newProp != null)
         {    
             newProp.transform.position = transform.position;

@@ -8,7 +8,7 @@ using UnityEngine;
 public static class GameData 
 {
     public static ChapterType chapter = ChapterType.Chapter_1;//玩家所在的章节
-    public static LevelType level = LevelType.Level_1;//玩家所在章节的地几关卡
+    public static uint level = 1;//玩家所在章节的地几关卡,>关卡索引就到Boss关,小于1则位于第1关
     //上面两个变量用于初始化确认玩家的生成位置+摄像机的放置位置
     //玩家持有的道具
     public static PropType prop = PropType.None;
@@ -25,7 +25,7 @@ public static class GameData
         {
             // 对应 GameData 中的静态变量
             public ChapterType chapter;
-            public LevelType level;
+            public uint level;
             public PropType prop;
             public uint life;
             public uint money;
