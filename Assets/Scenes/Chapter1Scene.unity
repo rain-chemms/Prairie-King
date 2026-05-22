@@ -189,6 +189,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1095256401283206087, guid: be6a37cad0aa8914389a7da6a9c62525, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095256401283206087, guid: be6a37cad0aa8914389a7da6a9c62525, type: 3}
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
@@ -199,6 +203,22 @@ PrefabInstance:
     - target: {fileID: 3382815645597563399, guid: be6a37cad0aa8914389a7da6a9c62525, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509543059095408227, guid: be6a37cad0aa8914389a7da6a9c62525, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509543059095408227, guid: be6a37cad0aa8914389a7da6a9c62525, type: 3}
+      propertyPath: m_AllowInstancing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509543059095408227, guid: be6a37cad0aa8914389a7da6a9c62525, type: 3}
+      propertyPath: m_ResetSeedOnPlay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509543059095408227, guid: be6a37cad0aa8914389a7da6a9c62525, type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7932712657768504833, guid: be6a37cad0aa8914389a7da6a9c62525, type: 3}
       propertyPath: m_LocalPosition.x
@@ -631,6 +651,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6433017882829234426, guid: 65abd36c9b55d5949b9b60c013120280, type: 3}
+      propertyPath: 'propEffectClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e29eb3d2dd22dc4f9395d1f96529918, type: 3}
     - target: {fileID: 8717853489101934278, guid: 65abd36c9b55d5949b9b60c013120280, type: 3}
       propertyPath: m_Name
       value: AudioManager

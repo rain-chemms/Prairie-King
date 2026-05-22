@@ -124,7 +124,33 @@ public class Prop : CollectableObjectModel
             default:
                 break;
         }
-                
+
+        //播放道具使用音频
+        String audioName = "";
+        switch(propType)
+        {
+            case PropType.Star:
+            case PropType.Wheel:
+            case PropType.MachineGun:
+            case PropType.ShotGun:
+            case PropType.Coffee:
+            case PropType.SmokeBomb:
+                break;
+            case PropType.Tomb:
+                audioName = "Tomb";
+                break;
+            case PropType.Nuclear:
+                audioName = "NuclearBomb";
+                break;
+            default:
+                break;
+        }      
+        //触发核弹音效
+        if(audioName!=null && !audioName.Equals(""))//若为有效音频
+        {
+            AudioManager.instance.ChangePropEffectClip(audioName);
+            AudioManager.instance.TriggerPropEffect();
+        }        
         
         switch(propType)
         {
@@ -160,9 +186,6 @@ public class Prop : CollectableObjectModel
                     enermy.canDropProp = false;//被核弹杀死不可掉落道具
                     enermy.BeHurt(500);
                 }
-                //触发核弹音效
-                AudioManager.instance.ChangePropEffectClip("NuclearBomb");
-                AudioManager.instance.TriggerPropEffect();
                 //TriggerAnimation();
                 break;
         }
