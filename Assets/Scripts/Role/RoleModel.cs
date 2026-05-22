@@ -13,8 +13,15 @@ public class RoleModel : AbstractModel
     [SerializeField] public float damage = 1f;//伤害
     [SerializeField] public Rigidbody rb;
     [SerializeField] public bool openTouchDamage = false;//是否开启接触伤害
+    public void OpenTouchDamage()
+    {
+        openTouchDamage = true;
+    }
+    public void CloseTouchDamage()
+    {
+        openTouchDamage = false;
+    }
     [SerializeField] public bool isInvulnerable = false;//是否无敌
-    
     //获取当前血量
     public float GetHp()
     {
@@ -58,7 +65,7 @@ public class RoleModel : AbstractModel
     void OnTriggerEnter(Collider other)
     {
         if(!openTouchDamage) return;
-        PlayerModel pl = other.GetComponent<PlayerModel>();
+        RoleModel pl = other.GetComponent<RoleModel>();
         if(pl != null)
         {
             pl.BeHurt(this.damage);

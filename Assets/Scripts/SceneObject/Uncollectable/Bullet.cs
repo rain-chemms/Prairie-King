@@ -46,7 +46,7 @@ public class Bullet : UncollectableObjectModel
     {
         if(rb == null) return;
         if(velocityModel)
-            rb.velocity = direction.normalized * force; 
+            rb.linearVelocity = direction.normalized * force; 
         else rb.AddForce(direction.normalized * force * Time.deltaTime,ForceMode.VelocityChange);
     }
     

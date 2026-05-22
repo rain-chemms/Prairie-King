@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
+using UnityEngine.VFX;
 
 public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropUser,PlayerVfxExpender
 {
@@ -13,6 +15,7 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
     public float baseShootInterval {get;}= 0.33f;
     public float baseMoveForce {get;}= 1000f;
     [Header("玩家属性")]
+    [SerializeField] public List<VisualEffect> vfxList = new List<VisualEffect>();
     [SerializeField] private float shootInterval = 0.5f;//射击间隔
     [SerializeField] private Vector2 shootDirection = Vector2.zero;//射击方向
     [SerializeField] protected bool isShoot = false;//是否正在射击
@@ -148,8 +151,6 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         //道具时间流动
         PropTimeFlow();
         FunctionPropEffect();//道具效果
-        //显示特效
-        DisplayVfx();
         //动画与射击检测
         AnimatorControl();
         CheckShoot();
@@ -303,12 +304,20 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         return true;
     }
     
-    [SerializeField] private bool isInvisible = false;//是否隐身
-    [SerializeField] private bool isZombieState = false;//是否为僵尸化
+    [SerializeField] public bool isInvisible = false;//是否隐身
+    [SerializeField] public bool isZombieState = false;//是否为僵尸化
     protected void FunctionPropEffect()
     {
-        isZombieState = propTimeRemainder.ContainsKey(PropType.Tomb);
-        isInvisible = propTimeRemainder.ContainsKey(PropType.SmokeBomb);
+        isZombieState = (bool)propTimeRemainder?.ContainsKey(PropType.Tomb);
+        isInvisible = (bool)propTimeRemainder?.ContainsKey(PropType.SmokeBomb);
+        if(isZombieState)
+        {
+            OpenTouchDamage();
+        }
+        else
+        {
+            CloseTouchDamage();
+        }
         if(isInvisible || isZombieState)
         {
             isInvulnerable = true;//僵尸化或隐身时无敌
@@ -433,21 +442,50 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
     }
     //PlayerVfxExpender接口
     //主显示:显示基础+接口新增特效
-    public void DisplayVfx()
+    public void DisplayVfx(String vfxName)
     {
-        
+        if(vfxList == null) return;
+        foreach(VisualEffect vfx in vfxList)
+        {
+            if((bool)vfx?.name.Equals(vfxName))
+            {
+                vfx?.Play();
+            }
+        }
+    }
+    public void DisplayVfx(int index)
+    {
+        if(vfxList == null || index >= vfxList.Count) return;
+        foreach(VisualEffect vfx in vfxList)
+        {
+            if(vfx?.name == vfxList[index]?.name)
+            {
+                vfx?.Play();
+            }
+        }
     }
     //子显示:显示隐身特效
     public void InvisiableVfxDisplay()
     {
-        if(isInvisible)
+        if(vfxList == null) return;
+        foreach(VisualEffect vfx in vfxList)
         {
-            
+            if((bool)vfx?.name.Equals("InvisiableVFX"))
+            {
+                vfx?.Play();
+            }
         }
     }
     public void ZombieStateVfxDisplay()
     {
-        
+        if(vfxList == null) return;
+        foreach(VisualEffect vfx in vfxList)
+        {
+            if((bool)vfx?.name.Equals("ZombieStateVFX"))
+            {
+                vfx?.Play();
+            }
+        }
     }
 
 }

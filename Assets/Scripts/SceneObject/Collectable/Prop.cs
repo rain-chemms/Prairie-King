@@ -106,6 +106,26 @@ public class Prop : CollectableObjectModel
     public bool EffectOnPlayer(PlayerModel effectPlayer)
     {
         if(effectPlayer == null) return false;
+        //显示道具特效
+        switch(propType)
+        {
+            case PropType.SmokeBomb:
+                if(effectPlayer is PlayerVfxExpender)
+                {
+                    effectPlayer.InvisiableVfxDisplay();//触发玩家的技能效果
+                }
+                break;
+            case PropType.Tomb:
+                if(effectPlayer is PlayerVfxExpender)
+                {
+                    effectPlayer.ZombieStateVfxDisplay();//触发玩家的技能效果
+                }
+                break;          
+            default:
+                break;
+        }
+                
+        
         switch(propType)
         {
             //数值恢复型
@@ -125,7 +145,7 @@ public class Prop : CollectableObjectModel
             case PropType.Coffee:
             case PropType.SmokeBomb:
             case PropType.Tomb:
-                effectPlayer.SetPropTime(propType,propEffectTime);           
+                effectPlayer.SetPropTime(propType,propEffectTime);
                 break;
             //星星比较特殊,是设置三个已有的技能事件
             case PropType.Star:

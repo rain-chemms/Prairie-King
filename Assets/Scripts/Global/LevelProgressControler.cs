@@ -18,7 +18,7 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
     }
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -26,7 +26,7 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         else
         {
             Destroy(gameObject);
-        }    
+        }
     }
 
     //关卡计时器
@@ -51,29 +51,33 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
     void Update()
     {
         //刷新计时器
-        if(!nowLevel.isBossLevel || timeLock)
-            timeRecorder += Time.deltaTime;
-        if(timeRecorder > nowLevel.GetPersistTime())
+        if (nowLevel != null)
         {
-            //超时后关闭当前关卡的敌人生成器
-            nowLevel.SetGeneratorsActivate<EnermyType,EnermyModel>(false);
-            //发出相应的响应
-            if(nowLevel?.GetEnermyManager()?.GetList().ToList().Count() <= 0)
+            if (!nowLevel.isBossLevel || timeLock)
+                timeRecorder += Time.deltaTime;
+            if (timeRecorder > nowLevel.GetPersistTime())
             {
-                //关卡计时器重置并锁定时间防止,持续刷新
-                SetTimeLock(true);
-                ResetTimeRecorder();
-                //关卡尾声逻辑
-                if(nowLevel!=null)
+                //超时后关闭当前关卡的敌人生成器
+                nowLevel.SetGeneratorsActivate<EnermyType, EnermyModel>(false);
+                //发出相应的响应
+                if (nowLevel?.GetEnermyManager()?.GetList().ToList().Count() <= 0)
                 {
-                    if(nowLevel.haveMerchant) GenerateMerchant();          
+                    //关卡计时器重置并锁定时间防止,持续刷新
+                    SetTimeLock(true);
+                    ResetTimeRecorder();
+                    //关卡尾声逻辑
+                    if (nowLevel != null)
+                    {
+                        if (nowLevel.haveMerchant) GenerateMerchant();
+                    }
                 }
             }
+
         }
     }
 
     private void GenerateMerchant()
     {
-        
+
     }
 }
