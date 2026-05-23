@@ -41,40 +41,7 @@ public class LevelModel : AbstractModel
         else SetEnermyManagerToEnermyGenerator();
     }
     //加载关卡静态函数
-    public static bool LoadLevel(PlayerModel player,PlayerCameraMover playerCamera,uint levelIndex = 1)
-    {
-        if(player == null || playerCamera == null) return false;
-        List<LevelModel> levels = FindObjectsOfType<LevelModel>().ToList();
-        if(levels == null || levels.Count <= 0) return false;
-        bool haveTargetLevel = false;
-        uint minLevel = uint.MaxValue;
-        LevelModel minLevelModel = null;
-        foreach(LevelModel levelModel in levels)
-        {
-            if(levelModel.level < minLevel) 
-            {
-                minLevel = levelModel.level;
-                minLevelModel = levelModel;
-            }
-            if(levelModel.level == levelIndex)
-            {
-                //设置玩家数据
-                LevelProgressControler.instance.SetNowLevel(levelModel);
-                levelModel.SetPlayerData(player,playerCamera);
-                haveTargetLevel = true;
-                break;    
-            }
-        }
-        if(!haveTargetLevel)
-        {
-            LevelProgressControler.instance.SetNowLevel(minLevelModel);
-            minLevelModel.SetPlayerData(player,playerCamera);
-            Debug.LogWarning("[LevelModel]:Not Find Level:{" + levelIndex + "}" + ", Have already jump To First Level");
-        }
-        return haveTargetLevel;
-    }
-
-    protected void SetPlayerData(PlayerModel player,PlayerCameraMover cameraMover)
+    public void SetPlayerData(PlayerModel player,PlayerCameraMover cameraMover)
     {
         if(player!=null && cameraMover!=null)
         {
