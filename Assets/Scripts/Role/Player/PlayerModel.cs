@@ -488,4 +488,12 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         }
     }
 
+    protected override void OnTriggerEnter(Collider other)
+    {
+        EnermyModel pl = other?.GetComponent<EnermyModel>();
+        if(pl != null)
+        {
+            base.OnTriggerEnter(other);
+        }
+    }
 }

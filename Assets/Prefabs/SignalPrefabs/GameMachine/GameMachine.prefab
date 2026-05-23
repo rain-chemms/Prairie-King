@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 1900193497542771447}
   - component: {fileID: 7970352501189754421}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Tittle (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,7 +429,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8619741307321554534}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6949656693954424964}
+        m_TargetAssemblyTypeName: GameMachineAnimatorTrigger, Assembly-CSharp
+        m_MethodName: LeverMove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6949656693954424964}
+        m_TargetAssemblyTypeName: GameMachineAnimatorTrigger, Assembly-CSharp
+        m_MethodName: ButtonCLick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 337729318591027974}
+        m_TargetAssemblyTypeName: GameMachine, Assembly-CSharp
+        m_MethodName: ExitGameMachine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &2924138123047995891
 Animator:
   serializedVersion: 7
@@ -517,7 +553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: Exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -526,8 +562,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -663,8 +699,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -738,6 +774,7 @@ GameObject:
   - component: {fileID: 3443589601682010140}
   - component: {fileID: 4117773614856649115}
   - component: {fileID: 6090884756481383734}
+  - component: {fileID: 4196249394367588554}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -831,6 +868,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4196249394367588554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369951195110529728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156ac1ef5ee63794ca85a3af794a54e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraAutoGetter
+  setCateory: 0
 --- !u!1 &6093339325828680967
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +1002,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2391573778151927199}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6949656693954424964}
+        m_TargetAssemblyTypeName: GameMachineAnimatorTrigger, Assembly-CSharp
+        m_MethodName: ButtonCLick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 337729318591027974}
+        m_TargetAssemblyTypeName: GameMachine, Assembly-CSharp
+        m_MethodName: ContinueGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &8054641899560423635
 Animator:
   serializedVersion: 7
@@ -985,6 +1059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2222310761658341986}
   - component: {fileID: 6949656693954424964}
+  - component: {fileID: 337729318591027974}
   m_Layer: 0
   m_Name: GameMachine
   m_TagString: Untagged
@@ -1021,7 +1096,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa71e5d2b7053640b7dd6ed218babc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameMachineAnimatorTrigger
-  animator: {fileID: 0}
+  animator: {fileID: 7401265993236593995}
+--- !u!114 &337729318591027974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6375095033317502904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eceeabfd84c98241ae0ab4e1205d655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameMachine
 --- !u!1 &8267302202072798734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1230,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 515186581105035915}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6949656693954424964}
+        m_TargetAssemblyTypeName: GameMachineAnimatorTrigger, Assembly-CSharp
+        m_MethodName: LeverMove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 337729318591027974}
+        m_TargetAssemblyTypeName: GameMachine, Assembly-CSharp
+        m_MethodName: StartNewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &2722393668968609791
 Animator:
   serializedVersion: 7

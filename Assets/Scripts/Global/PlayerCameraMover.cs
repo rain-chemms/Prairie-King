@@ -14,7 +14,7 @@ public class PlayerCameraMover : MonoBehaviour
             //移动摄像机
             camera.transform.position = Vector3.Lerp(camera.transform.position,moveTarget.position,Time.deltaTime * lerpSpeed);
             //旋转摄像机
-            camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation,Quaternion.LookRotation(moveTarget.position - camera.transform.position),Time.deltaTime * rotateSpeed);
+            camera.transform.rotation = Quaternion.Lerp(camera.transform.rotation,moveTarget.transform.rotation,Time.deltaTime * rotateSpeed);
         }
     }
 

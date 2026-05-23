@@ -106,5 +106,6 @@ public class LevelModel : AbstractModel
                 generateList.SetActivate(isActivate);
             }
         }
+        Debug.Log("[LevelModel]:Set Generators Activate:"+isActivate+" | List Size:"+abstractGenerateLists.Count);
     }
 }

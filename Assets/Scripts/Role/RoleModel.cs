@@ -62,7 +62,7 @@ public class RoleModel : AbstractModel
     }
 
     //接触伤害
-    void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if(!openTouchDamage) return;
         RoleModel pl = other.GetComponent<RoleModel>();

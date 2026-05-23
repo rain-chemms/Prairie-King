@@ -18,6 +18,17 @@ public static class GameData
     public  static BootsType boots = BootsType.None;//靴子等级
     public static WeaponUpType weaponUp = WeaponUpType.None;//武器升级
     public static BulletType bullet = BulletType.None;//子弹等级,None代表未强化
+    public static void ResetData()//重置数据
+    {
+        chapter = ChapterType.Chapter_1;
+        level = 1;
+        prop = PropType.None;
+        life = 3;
+        money = 0;
+        boots = BootsType.None;
+        weaponUp = WeaponUpType.None;
+        bullet = BulletType.None;
+    }
 
     public static class SaveSystem
     {
@@ -79,6 +90,7 @@ public static class GameData
             }
         }
 
+        //读取存档
         public static bool LoadGame()
         {
             String loadPath = Path.Combine(Application.persistentDataPath,savePath,saveName);

@@ -41,6 +41,7 @@ public class SerializeDictionary<KeyType,ValueType> : Dictionary<KeyType,ValueTy
     //打印字典内全部数据
     public void PrintAll()
     {
+        /*
         Debug.Log("[SerializeDictionary<" + typeof(KeyType).ToString() + "," + typeof(ValueType).ToString() + ">]: Data List => {");
         Debug.Log("    Key       Value");
         foreach (KeyValuePair<KeyType,ValueType> item in this)
@@ -48,5 +49,6 @@ public class SerializeDictionary<KeyType,ValueType> : Dictionary<KeyType,ValueTy
             Debug.Log("    " + item.Key.ToString() + "       " + item.Value.ToString());    
         }
         Debug.Log("}");
+        */
     }
 }

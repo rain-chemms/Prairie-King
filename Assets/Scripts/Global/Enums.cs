@@ -6,7 +6,8 @@ using UnityEngine;
 public enum ChapterType
 {
     Chapter_1,
-    Chapter_2
+    Chapter_2,
+    Chapter_3
 }
 /*
     三种强化的枚举

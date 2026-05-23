@@ -125,4 +125,13 @@ public class EnermyModel : RoleModel
             agent.SetDestination(tar);
         }
     }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        PlayerModel pl = other?.GetComponent<PlayerModel>();
+        if(pl != null)
+        {
+            base.OnTriggerEnter(other);
+        }
+    }
 }

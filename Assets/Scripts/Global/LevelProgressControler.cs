@@ -48,6 +48,16 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         ResetTimeRecorder();
     }
 
+    private bool nowLevelHaveSaved = false;
+    private void SaveDataToGameData()
+    {
+        if(nowLevel != null && !nowLevelHaveSaved)
+        {
+            GameData.level = nowLevel.level;
+            nowLevelHaveSaved = true;
+        }
+    }
+
     void Update()
     {
         //刷新计时器
@@ -70,6 +80,8 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
                     {
                         if (nowLevel.haveMerchant) GenerateMerchant();
                     }
+                    //保存当前关卡数据
+                    SaveDataToGameData();
                 }
             }
 
@@ -86,6 +98,7 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         if(player == null || playerCamera == null) return false;
         List<LevelModel> levels = FindObjectsOfType<LevelModel>().ToList();
         if(levels == null || levels.Count <= 0) return false;
+        LevelProgressControler.instance.nowLevelHaveSaved = false;//关卡数据保存状态重置
         bool haveTargetLevel = false;
         uint minLevel = uint.MaxValue;
         LevelModel targetLevelModel = null;

@@ -51,7 +51,7 @@ public class AbstractGenerateList<Source,Product> : MonoBehaviour where Source :
         if(times.Count > 0)
         {
             maxTime = times.Max();
-            Debug.Log("[AbstractGenerateList<" +typeof(Source).ToString()+","+ typeof(Product).ToString() + "> (" + this.GetType().ToString() +") ]:" + " Max Time:" + maxTime.ToString());
+            //Debug.Log("[AbstractGenerateList<" +typeof(Source).ToString()+","+ typeof(Product).ToString() + "> (" + this.GetType().ToString() +") ]:" + " Max Time:" + maxTime.ToString());
         }
         else Debug.LogWarning("[AbstractGenerateList<" +typeof(Source).ToString()+","+ typeof(Product).ToString() + "> (" + this.GetType().ToString() +") ]:" + " TimeList is Empty!");
     }
