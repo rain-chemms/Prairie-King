@@ -242,12 +242,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0}
-  moveForce: 1000
+  moveForce: 0.5
   rotateSpeed: 5
   hp: 1
   damage: 1
   rb: {fileID: 7217200196978266999}
   openTouchDamage: 0
+  forceMode: 2
+  maxVelocity: 0.5
   isInvulnerable: 0
   vfxList:
   - {fileID: 5509543059095408227}

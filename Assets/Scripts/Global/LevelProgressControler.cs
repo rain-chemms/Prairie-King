@@ -132,7 +132,26 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         yield return new WaitForSeconds(time);            
         //激活所有当前关卡的敌人生成器
         LevelProgressControler.instance.GetNowLevel().SetGeneratorsActivate<EnermyType, EnermyModel>(true);
-        AudioManager.instance.ChangeBgm("Normal");
-        AudioManager.instance.TriggerRandomBgm();
+        //设置BGM
+        bool isBoss = LevelProgressControler.instance.GetNowLevel().isBossLevel;
+        if(isBoss)
+        {
+            switch(GameData.chapter)
+            {
+                case ChapterType.Chapter_3:
+                    AudioManager.instance.ChangeBgm("LastBoss");
+                    break;
+                case ChapterType.Chapter_1:
+                case ChapterType.Chapter_2:
+                default:
+                    AudioManager.instance.ChangeBgm("OutLawBoss");
+                    break;
+            }
+        }
+        else
+        {
+            AudioManager.instance.ChangeBgm("Normal");
+        }
+        AudioManager.instance.PlayBgm();//播放BGM
     }
 }

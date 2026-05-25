@@ -13,7 +13,7 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
     //PlayerValueCaculator
     public float baseDamage {get;} = 1f;
     public float baseShootInterval {get;}= 0.33f;
-    public float baseMoveForce {get;}= 1000f;
+    public float baseMoveForce {get;}= 15f;
     [Header("玩家属性")]
     [SerializeField] public List<VisualEffect> vfxList = new List<VisualEffect>();
     [SerializeField] private float shootInterval = 0.5f;//射击间隔
@@ -276,6 +276,18 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         {
             animator.SetBool("IsShoot",false);
         }
+        //射击速度控制
+        float shootSpeed = float.PositiveInfinity;
+        try
+        {
+            shootSpeed = baseShootInterval / NowShootInterval();   
+        }
+        catch(Exception e)
+        {
+            Debug.Log("[PlayerModel]:"+"Shoot Interval is ZERO! Exception:"+e.Message);
+            shootSpeed = float.PositiveInfinity;
+        }
+        animator.SetFloat("ShootSpeed",shootSpeed);
     }
 
     public void SetShootDirection(Vector2 direction)

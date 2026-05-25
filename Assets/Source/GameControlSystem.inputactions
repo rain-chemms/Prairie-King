@@ -8,75 +8,75 @@
             "actions": [
                 {
                     "name": "MoveUp",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "1bf37ad4-41aa-4907-86b0-0bc3acd766d0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveDown",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "0252e257-fe95-45d7-80b7-8e42363f6611",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveRight",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "ad13644f-13eb-4402-8dea-b39e53cceee8",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveLeft",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "2713b82d-9b57-48d8-9a58-42bdfc9d1b19",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "UpShoot",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "0949cad5-211f-4084-b42d-e3b123eed252",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "DownShoot",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "94ee1f76-ebb6-425d-88ae-5a0a100cda3e",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "LeftShoot",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "d1adc6ee-a72d-48bf-9160-362265ec7182",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RightShoot",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "eccb778a-0566-438d-ab21-fc49d34e903d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "UseProp",

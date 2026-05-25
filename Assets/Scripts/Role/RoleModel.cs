@@ -13,6 +13,8 @@ public class RoleModel : AbstractModel
     [SerializeField] public float damage = 1f;//伤害
     [SerializeField] public Rigidbody rb;
     [SerializeField] public bool openTouchDamage = false;//是否开启接触伤害
+    [SerializeField] public ForceMode forceMode = ForceMode.Force;//移动时作用力模式
+    //[SerializeField] public float maxVelocity = 100f;//最大速度
     public void OpenTouchDamage()
     {
         openTouchDamage = true;
@@ -56,9 +58,21 @@ public class RoleModel : AbstractModel
         //在移动的情况下,添加作用力并修改角色方向
         if(moveDirection != Vector2.zero)
         {
-            rb.AddForce(dir * moveForce * Time.deltaTime);
+            //速度模式下以自身的作用力大小限制速度大小
+            if(forceMode == ForceMode.VelocityChange)
+            {
+                /*
+                if(rb.linearVelocity.magnitude > moveForce)
+                {
+                    rb.linearVelocity = rb.linearVelocity.normalized * moveForce;
+                }
+                */
+                rb.linearVelocity = dir.normalized * moveForce;
+            }
+            else rb.AddForce(dir * moveForce * Time.deltaTime,forceMode);
             rb.transform.forward = Vector3.Lerp(rb.transform.forward,dir,Time.deltaTime * rotateSpeed);
         }
+        else rb.linearVelocity = Vector3.zero;//无移动方向时停止移动
     }
 
     //接触伤害

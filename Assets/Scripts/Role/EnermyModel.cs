@@ -115,6 +115,7 @@ public class EnermyModel : RoleModel
         //openTouchDamage = true;
         SearchPlayer();
     }
+    //限制角色AI速度
 
     //智能体移动
     public virtual void Move_Agent()
