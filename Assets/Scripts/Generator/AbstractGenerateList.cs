@@ -66,7 +66,11 @@ public class AbstractGenerateList<Source,Product> : MonoBehaviour where Source :
         if(recordTime > maxTime)
         {
             //循环条件下,重新开始计时器时间
-            if(isLoop) ResetTime();
+            if(isLoop) 
+            {
+                isGenerate.Clear();
+                ResetTime();
+            }
             else isActivate = false;
         }
         CheckProductGenerate();
