@@ -191,12 +191,15 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
     private float shootIntervalRecorder = 0f;
     protected virtual void Shoot()
     {
+        /*
         if(!isShoot)
         {
             shootIntervalRecorder = shootInterval;
             return;
         }
+        */
         shootIntervalRecorder += Time.deltaTime;
+        if(!isShoot) return;//未射击时直接返回
         //射击间隔未达到时无法开火
         if(shootIntervalRecorder < shootInterval) return;
         bool isEightDir = false;

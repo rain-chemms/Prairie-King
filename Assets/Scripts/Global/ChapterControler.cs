@@ -47,6 +47,8 @@ public class ChapterControler : MonoBehaviour
         Debug.Log("[ChapterControler] Set Player: " + player?.name + "| CameraMover: " + cameraMover?.name);
         //加载相应关卡
         LevelProgressControler.LoadLevel(player,cameraMover,GameData.level);
+        //显示战斗UI
+        GameDataUI.instance.SetDisplay(true);
     }
 
     //加载游戏数据中的场景

@@ -32,6 +32,11 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
     //关卡计时器
     //UI组件可以读取关卡进度控制器的数据进行UI更新
     [SerializeField] private float timeRecorder = 0;
+    public float GetTimeRecorder()
+    {
+        return timeRecorder;
+    }
+    
     [SerializeField] private bool timeLock = false;//关卡计时器是否被锁定
     public void SetTimeLock(bool isLock)
     {
@@ -63,7 +68,7 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         //刷新计时器
         if (nowLevel != null)
         {
-            if (!nowLevel.isBossLevel || timeLock)
+            if (!nowLevel.isBossLevel && !timeLock)
                 timeRecorder += Time.deltaTime;
             if (timeRecorder > nowLevel.GetPersistTime())
             {
