@@ -80,6 +80,9 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
                     //关卡计时器重置并锁定时间防止,持续刷新
                     SetTimeLock(true);
                     ResetTimeRecorder();
+                    //开启下一关加载器
+                    nowLevel?.GetNextLevelLoader()?.SetOpen(true);
+                    nowLevel?.GetNextLevelLoader()?.OpenTrapPart();//打开所有关闭的机关
                     //关卡尾声逻辑
                     if (nowLevel != null)
                     {
@@ -126,6 +129,8 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         if(targetLevelModel == null){Debug.LogWarning("[LevelProgressControler]:Not have Level In this Scene!");return false;}
         //设置玩家数据
         LevelProgressControler.instance.SetNowLevel(targetLevelModel);
+        //关闭当前关卡的下一关加载器
+        LevelProgressControler.instance?.GetNowLevel()?.GetNextLevelLoader()?.SetOpen(false);
         targetLevelModel.SetPlayerData(player,playerCamera);
         instance?.StartCoroutine(instance?.StartLevel(2.0f));//2.0s后开始关卡,单例启动携程
         return haveTargetLevel;

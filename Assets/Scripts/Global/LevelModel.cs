@@ -22,6 +22,15 @@ public class LevelModel : AbstractModel
     [SerializeField] public bool isBossLevel = false;//是否是Boss关
     [SerializeField] protected CameraAnchor cameraAnchor;
     [SerializeField] protected PlayerAnchor playerAnchor;
+    [SerializeField] protected NextLevelLoader nextLevelLoader;//下一关加载器
+    public void SetNextLevelLoader(NextLevelLoader nextLevelLoader)//设置下一关加载器
+    {
+        this.nextLevelLoader = nextLevelLoader;
+    }
+    public NextLevelLoader GetNextLevelLoader()//获取下一关加载器
+    {
+        return nextLevelLoader;
+    }
     [SerializeField] protected EnermyManager enermyManager;//敌人管理器
     public void SetEnermyManager(EnermyManager enermyManager)
     {
