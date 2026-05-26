@@ -4,10 +4,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using UnityEngine.VFX;
+using System.Collections;
 
-public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropUser,PlayerVfxExpender
+public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,
+    PropUser,PlayerVfxExpender,PlayerAnimatorDeathFunction
 {
     //接口属性实现
+    //PlayerAnimatorDeathFunction
+    public float delay {get;}= 2.0f;
     //PropTimeRecorder
     public Dictionary<PropType,float> propTimeRemainder {get;set;} = new Dictionary<PropType,float>();
     //PlayerValueCaculator
@@ -510,5 +514,39 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,PropU
         {
             base.OnTriggerEnter(other);
         }
+    }
+    //PlayerAnimatorDeathFunction接口
+    //角色死亡功能绑定
+    public IEnumerator AfterDelayDeathFunction()
+    {
+        //角色死亡后延迟时间之后执行的功能
+        yield return new WaitForSeconds(delay);
+        //清除场景中所有的敌人
+        EnermyModel[] enermyModels = FindObjectsOfType<EnermyModel>();
+        foreach(EnermyModel enermyModel in enermyModels)
+        {
+            Destroy(enermyModel.gameObject);
+        }
+        //重新加载当前关卡
+        PlayerCameraMover cameraMover = FindObjectOfType<PlayerCameraMover>()?.GetComponent<PlayerCameraMover>();
+        LevelProgressControler.LoadLevel(this,cameraMover,LevelProgressControler.instance.GetNowLevel().level);
+        LevelProgressControler.instance.ResetTimeRecorder();
+        GameData.life -= 1;
+        //强制切换玩家MoveLayer的动画
+        animator.Play("Idle",0);
+        //播放BGM
+        AudioManager.instance.PlayBgm();
+        //激活玩家控制器
+        if(playerControl!=null) playerControl.Enable();
+        hp = 1f;//恢复生命
+        haveTriggerDeath = false;//恢复死亡统计状态
+    }
+
+    public void DeathInstantFunction()
+    {
+        //角色死亡后延迟时间之前执行的功能
+        //播放死亡音效
+        AudioManager.instance.ChangeDeathEffectClip("Death1");
+        AudioManager.instance.TriggerDeathEffect();
     }
 }

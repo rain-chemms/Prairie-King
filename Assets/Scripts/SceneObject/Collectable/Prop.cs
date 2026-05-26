@@ -64,7 +64,7 @@ public class Prop : CollectableObjectModel
         switch(propType)
         {
             case PropType.Star:
-                audioName = "StarPickUp";
+                audioName = "StarCollect";
                 break;
             case PropType.ShotGun:
             case PropType.MachineGun:
@@ -78,10 +78,16 @@ public class Prop : CollectableObjectModel
                 audioName = "GadgetPickUp";
                 break;
             case PropType.FiveCoin:
+                audioName = "FiveCoinPickUp";
+                break;
             case PropType.OneCoin:
+                audioName = "OneCoinPickUp";
+                break;
             case PropType.LifeCoin:
+                audioName = "LifeCoinPickUp";
+                break;
             default:
-                audioName = "CoinPickUp";
+                audioName = "OneCoinPickUp";
                 break;
         }
         AudioManager.instance.ChangeCollectClip(audioName);
@@ -129,19 +135,34 @@ public class Prop : CollectableObjectModel
         String audioName = "";
         switch(propType)
         {
-            case PropType.Star:
             case PropType.Wheel:
-            case PropType.MachineGun:
+                audioName = "WheelUse";
+                break;
             case PropType.ShotGun:
+                audioName = "Reload_ShotGun_Use";
+                break;
+            case PropType.MachineGun:
+                audioName = "Reload_MachineGun_Use";
+                break;
+            case PropType.Star:
+                audioName = "StarUse";
+                break;
             case PropType.Coffee:
+                audioName = "CoffeeUse";
+                break;
             case PropType.SmokeBomb:
+                audioName = "SmokeUse";
                 break;
             case PropType.Tomb:
-                audioName = "Tomb";
+                audioName = "TombUse";
                 break;
             case PropType.Nuclear:
-                audioName = "NuclearBomb";
+                audioName = "NuclearBombUse";
                 break;
+            case PropType.LifeCoin:
+            case PropType.FiveCoin:
+            case PropType.OneCoin:    
+            case PropType.None:
             default:
                 break;
         }      

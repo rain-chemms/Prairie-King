@@ -3846,6 +3846,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameDataUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8265213669239026349, guid: 8d9a10bd20b2a874f957f9fa9ad7b456, type: 3}
+      propertyPath: 'propTextureDict.values.Array.data[8]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 3c5c9617ec24ea94fa9fb889e40087d9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

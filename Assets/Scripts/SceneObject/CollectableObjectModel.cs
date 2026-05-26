@@ -20,7 +20,7 @@ public class CollectableObjectModel : SceneObjectModel
     //玩家拾取后会产生的效果
     public virtual void AfterCollect(PlayerModel collectPlayer)
     {
-        //触发随机拾取音效(不包括核弹音效)
+        //激活拾取音效
         AudioManager.instance.TriggerCollectEffect();
         //拾取后禁用自身碰撞体
         CloseAllCollider();

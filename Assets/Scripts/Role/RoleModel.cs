@@ -98,8 +98,13 @@ public class RoleModel : AbstractModel
     {}
 
     //更新函数
-    private bool haveTriggerDeath = false;
     protected void Update()
+    {
+        CheckDeath();
+    } 
+    
+    protected bool haveTriggerDeath = false;
+    protected virtual void CheckDeath()
     {
         if(IsDeath())
         {
@@ -109,5 +114,5 @@ public class RoleModel : AbstractModel
                 OnDeath();
             }
         }
-    } 
+    }
 }

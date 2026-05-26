@@ -36,6 +36,9 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource propEffect;
     public List<AudioClip> propEffectClips;
+    
+    public AudioSource deathEffect;
+    public List<AudioClip> deathEffectClips;
     //激活道具使用音效
     public void TriggerPropEffect()
     {
@@ -223,6 +226,7 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+    //更改射击音效
     //参数：index
     public void ChangeShootEffectClip(int index)
     {
@@ -234,6 +238,44 @@ public class AudioManager : MonoBehaviour
         shootEffect.clip = shootEffectClips[index];
         Debug.Log("[AudioManager]:Change Shoot Effect Clip to " + shootEffectClips[index].name);
     }
+    //激活死亡音效
+    public void TriggerDeathEffect()
+    {
+        //播放死亡音效
+        //AudioManager.instance;
+        if(deathEffect == null) return;
+        if(deathEffect.loop) deathEffect.loop = false; 
+        deathEffect.Play();
+        Debug.Log("[AudioManager]:Trigger Death Effect Sound");
+    }
+    //更改死亡音效
+    //参数：index
+    public void ChangeDeathEffectClip(int index)
+    {
+        if(deathEffect == null) return;
+        if(deathEffectClips==null) return;
+        if(deathEffectClips.Count <= 0) return;
+        if(index >= deathEffectClips.Count) index = deathEffectClips.Count - 1;
+        else if(index < 0) index = 0;
+        deathEffect.clip = deathEffectClips[index];
+        Debug.Log("[AudioManager]:Change Shoot Effect Clip to " + deathEffectClips[index].name);
+    }
+    //参数：name
+    public void ChangeDeathEffectClip(String name)
+    {
+        if(deathEffect == null) return;
+        if(deathEffectClips==null) return;
+        if(deathEffectClips.Count <= 0) return;
+        for(int i = 0; i < deathEffectClips.Count; i++)
+        {
+            if(deathEffectClips[i].name.Equals(name))
+            {
+                deathEffect.clip = deathEffectClips[i];
+                Debug.Log("[AudioManager]:Change Shoot Effect Clip to " + deathEffect.clip.name);
+            }
+        }
+    }
+
     //随机触发器
     //随机受击音效
     public void TriggerRandomHitEffect(List<String> exceptClips = null)
@@ -344,5 +386,28 @@ public class AudioManager : MonoBehaviour
         if(propEffect.loop) propEffect.loop = false;
         propEffect.Play();
         Debug.Log("[AudioManager]:Trigger Random Prop Effect " + propEffect.clip.name);
+    }
+    //激活随机死亡音效
+    public void TriggerRandomDeathEffect(List<String> exceptClips = null)
+    {
+        if(deathEffect == null) return;
+        if(deathEffectClips == null) return;
+        if(deathEffectClips.Count <= 0) return;
+        List<AudioClip> realClips = new List<AudioClip>();
+        for(int i = 0; i < deathEffectClips.Count; i++)
+        {
+            AudioClip clip = deathEffectClips[i];
+            if(exceptClips != null)
+            {
+                if(exceptClips.Contains(clip.name)) continue;
+            }
+            realClips.Add(clip);
+        }
+        if(realClips.Count <= 0) return;
+        int index = UnityEngine.Random.Range(0, realClips.Count);
+        deathEffect.clip = realClips[index];
+        if(deathEffect.loop) deathEffect.loop = false;
+        deathEffect.Play();
+        Debug.Log("[AudioManager]:Trigger Random Death Effect " + deathEffect.clip.name);
     }
 }
