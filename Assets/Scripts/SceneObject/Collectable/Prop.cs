@@ -90,7 +90,7 @@ public class Prop : CollectableObjectModel
                 audioName = "OneCoinPickUp";
                 break;
         }
-        AudioManager.instance.ChangeCollectClip(audioName);
+        AudioManager.instance?.ChangeCollectClip(audioName);
         base.AfterCollect(collectPlayer);
         //直接生效->存储到背包->背包满触发
         Debug.Log("[Prop]:"+"Collect Prop:"+propType);
@@ -169,8 +169,8 @@ public class Prop : CollectableObjectModel
         //触发核弹音效
         if(audioName!=null && !audioName.Equals(""))//若为有效音频
         {
-            AudioManager.instance.ChangePropEffectClip(audioName);
-            AudioManager.instance.TriggerPropEffect();
+            AudioManager.instance?.ChangePropEffectClip(audioName);
+            AudioManager.instance?.TriggerPropEffect();
         }        
         
         switch(propType)

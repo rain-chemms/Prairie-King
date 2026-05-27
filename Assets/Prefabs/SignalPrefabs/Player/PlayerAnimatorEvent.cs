@@ -20,7 +20,7 @@ public class PlayerAnimatorEvent : MonoBehaviour
     public void CloseBgm()
     {
         //停止BGM
-        AudioManager.instance.StopBgm();
+        AudioManager.instance?.StopBgm();
     }
 
     //死亡的瞬间

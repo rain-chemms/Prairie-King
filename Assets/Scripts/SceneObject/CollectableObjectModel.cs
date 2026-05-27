@@ -21,7 +21,7 @@ public class CollectableObjectModel : SceneObjectModel
     public virtual void AfterCollect(PlayerModel collectPlayer)
     {
         //激活拾取音效
-        AudioManager.instance.TriggerCollectEffect();
+        AudioManager.instance?.TriggerCollectEffect();
         //拾取后禁用自身碰撞体
         CloseAllCollider();
     }
