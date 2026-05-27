@@ -1,4 +1,4 @@
 using UnityEngine;
-public class WeaponUpMaterialChanger : EnumMaterialChanger<BulletType>
+public class WeaponUpMaterialChanger : EnumMaterialChanger<WeaponUpType>
 {}
 

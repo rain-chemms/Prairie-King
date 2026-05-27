@@ -15,6 +15,7 @@ public class Enermy1 : EnermyModel
     void FixedUpdate()
     {
         Move_Agent();
+        //Move();
     }
     protected override void OnDeath()
     {

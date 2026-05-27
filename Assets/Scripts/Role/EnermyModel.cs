@@ -31,15 +31,32 @@ public class EnermyModel : RoleModel
     //追赶目标玩家
     //计算moveDirection
     //Update()函数中调用,返回目标的世界坐标位置
+    [SerializeField] protected bool shocked = false;
+    public void CheckShocked()
+    {
+        if (targetPlayer != null)
+        {
+            if(targetPlayer.isZombieState)
+            {
+                shocked = true;
+            }
+            else
+            {
+                shocked = false;
+            }
+        }
+    }
+
     public virtual Vector3 FollowPlayer()
     {
         Vector3 tar = transform.position;
         if(targetPlayer == null || targetPlayer.isInvisible) return tar;
-        tar = ((Vector3)(transform.position - targetPlayer?.transform.position)).normalized;
+        tar = ((Vector3)(targetPlayer?.transform.position - transform.position)).normalized;
         //2.5D游戏,需要x和z值
+        if(shocked) tar = -tar;    
         moveDirection.x = tar.x;//获取x
         moveDirection.y = tar.z;//获取z
-        if(targetPlayer.isZombieState) return tar;//逃离玩家
+        //目标玩家僵尸化时逃离玩家,需要给出玩家相对于敌人自身的反向目标点的全局坐标
         return (Vector3)targetPlayer?.transform.position;
     }
 
@@ -106,6 +123,7 @@ public class EnermyModel : RoleModel
     new protected void Update()
     {
         //Debug.Log("EM Update");
+        CheckShocked();
         base.Update();
     }
 
@@ -122,11 +140,22 @@ public class EnermyModel : RoleModel
     public virtual void Move_Agent()
     {
         Vector3 tar = FollowPlayer();
+        if(shocked)
+        {
+            // 1. 计算从玩家(目标)指向当前角色的方向向量
+            Vector3 runAwayDirection = transform.position - tar;
+            // 2. 将该方向归一化，并乘以一个逃跑距离（例如 5 米），得出新的逃跑目标点
+            float runDistance = 5f; 
+            Vector3 escapeDestination = transform.position + runAwayDirection.normalized * runDistance;
+            // 3. 将逃跑目标点赋给 tar，这样下面的 SetDestination 就会使用这个新坐标
+            tar = escapeDestination;
+        }
         if(agent!=null && agent.enabled)
         {
             agent.SetDestination(tar);
         }
     }
+    //敌人的Move还是要重写的
 
     protected override void OnTriggerEnter(Collider other)
     {

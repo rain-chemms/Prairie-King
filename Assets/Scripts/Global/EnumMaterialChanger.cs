@@ -8,20 +8,23 @@ public class EnumMaterialChanger<EnumType> : MonoBehaviour where EnumType : Enum
 {
     [Header("下面这些变量与材质更改有关,可以不设置")]
     [SerializeField] public SerializeDictionary<EnumType,Material> materialDict = new SerializeDictionary<EnumType,Material>();
-    [SerializeField] public Transform changePart = null;
+    [SerializeField] public List<Transform> changeParts = null;
     public void ChangeOutLook(EnumType type)
     {
-        if(changePart == null) return;
+        if(changeParts == null || changeParts.Count <= 0) return;
         if(materialDict.Count <= 0 || !materialDict.ContainsKey(type)) return;
         foreach(KeyValuePair<EnumType,Material> item in materialDict)
         {
             if(item.Key.Equals(type))
             {
-                Renderer renderer = changePart.GetComponent<Renderer>();
-                if(item.Value != null && renderer!=null) 
+                foreach(Transform changePart in changeParts)
                 {
-                    renderer.material =  item.Value;
-                    break;
+                    if(changePart == null) continue;
+                    Renderer renderer = changePart.GetComponent<Renderer>();
+                    if(item.Value != null && renderer!=null) 
+                    {
+                        renderer.material =  item.Value;
+                    }    
                 }
             }
         }
