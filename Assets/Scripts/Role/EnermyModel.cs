@@ -35,7 +35,7 @@ public class EnermyModel : RoleModel
     {
         Vector3 tar = transform.position;
         if(targetPlayer == null || targetPlayer.isInvisible) return tar;
-        tar = ((Vector3)(targetPlayer?.transform.position - transform.position)).normalized;
+        tar = ((Vector3)(transform.position - targetPlayer?.transform.position)).normalized;
         //2.5D游戏,需要x和z值
         moveDirection.x = tar.x;//获取x
         moveDirection.y = tar.z;//获取z
@@ -118,6 +118,7 @@ public class EnermyModel : RoleModel
     //限制角色AI速度
 
     //智能体移动
+    //private Vector3 agent_target = Vector3.zero;
     public virtual void Move_Agent()
     {
         Vector3 tar = FollowPlayer();
