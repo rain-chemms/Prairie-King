@@ -297,7 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponUpCostDisplayer
   goods: {fileID: 8529119812338790682}
   text: {fileID: 6632057708949577724}
-  alwaysCheckCostByType: 0
+  alwaysCheckCostByType: 1
 --- !u!1 &4602458933492005821
 GameObject:
   m_ObjectHideFlags: 0

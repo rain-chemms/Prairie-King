@@ -1,4 +1,4 @@
 using UnityEngine;
-public class BootsMaterialChanger : EnumMaterialChanger<BulletType>
+public class BootsMaterialChanger : EnumMaterialChanger<BootsType>
 {}
 

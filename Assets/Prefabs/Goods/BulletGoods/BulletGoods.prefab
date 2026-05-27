@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletCostDisplayer
   goods: {fileID: 4389587150377445124}
   text: {fileID: 375808448100481862}
-  alwaysCheckCostByType: 0
+  alwaysCheckCostByType: 1
 --- !u!1 &2674881037946250078
 GameObject:
   m_ObjectHideFlags: 0
