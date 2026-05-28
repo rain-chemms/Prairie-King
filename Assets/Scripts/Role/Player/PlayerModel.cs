@@ -242,7 +242,7 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,
                 else GenerateBullet(dirRotation);
             }
             //触发随机射击音效
-            AudioManager.instance.TriggerShootEffect();
+            AudioManager.instance?.TriggerShootEffect();
             //重置射击间隔
             shootIntervalRecorder = 0f;
         }

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2495547035660298406}
   - component: {fileID: 1078367946439355963}
   - component: {fileID: 6756994830302021600}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WeaponUpGoods
-  m_TagString: Untagged
+  m_TagString: Goods
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8226941432904847719}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 2142407607589433193}
   - component: {fileID: 693333746519384707}
   - component: {fileID: 1956296949477712325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CostDisplayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.1}
+  m_AnchoredPosition: {x: 0, y: 0.2}
   m_SizeDelta: {x: 10, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2149696381437799936
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 8899289072995258227}
   - component: {fileID: 3115626711555107829}
   - component: {fileID: 6632057708949577724}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,6 +445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8226941432904847719}
     m_Modifications:
+    - target: {fileID: -9043827409405374959, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -485,9 +489,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6111562548699428331, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5024628470013888933, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -1314872803122130754, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -357492444703402380, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 901897122485332503, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
       propertyPath: m_Name
       value: WeapenUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723151942957469692, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766212503428324877, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619225641134156614, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462435422856167486, guid: bf6648a03ffb8ec40a10944aceaf4ac8, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

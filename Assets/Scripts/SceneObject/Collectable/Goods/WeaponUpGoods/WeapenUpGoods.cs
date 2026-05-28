@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeapenUpGoods : GoodsModel<WeaponUpType>
+public class WeaponUpGoods : GoodsModel<WeaponUpType>
 {
     //获取后更改的武器升级类型
     public override void AfterCollect(PlayerModel collectPlayer)

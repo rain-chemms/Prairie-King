@@ -16,6 +16,15 @@ public interface IGoodsComponent
 public class GoodsModel<EnumType> : CollectableObjectModel,IGoodsComponent,EnumGoodsCostSetter<EnumType> where EnumType : Enum
 {
     [SerializeField] protected EnumType type;
+    public void SetGoodsType(EnumType type)
+    {
+        this.type = type;
+    }
+    public EnumType GetGoodsType()
+    {
+        return type;
+    }
+    
     [SerializeField] protected uint cost = 0;// 商品价格
     public virtual uint GetCost()
     {
