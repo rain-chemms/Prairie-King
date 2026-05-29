@@ -527,9 +527,9 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,
         {
             Destroy(merchantModel.gameObject);
         }
-        //清除场景中所有的场景物品:包括可拾取的+不可拾取的
-        SceneObjectModel[] propModels = FindObjectsOfType<SceneObjectModel>();
-        foreach(SceneObjectModel propModel in propModels)
+        //清除场景中所有的场景物品:可拾取的
+        CollectableObjectModel[] propModels = FindObjectsOfType<CollectableObjectModel>();
+        foreach(CollectableObjectModel propModel in propModels)
         {
             Destroy(propModel.gameObject);
         }

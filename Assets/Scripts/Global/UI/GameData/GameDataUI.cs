@@ -59,7 +59,5 @@ public class GameDataUI : MonoBehaviour
     [SerializeField] public GameDataCoinsBar coinsBar;
     [SerializeField] public GameDataTimeBar timeBar;
     [SerializeField] public GameDataPropBar propUI;
-
-    
-        
+    [SerializeField] public GameDataUpgradesBar upgradesBar;
 }

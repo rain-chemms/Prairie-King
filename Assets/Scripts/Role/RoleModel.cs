@@ -35,7 +35,7 @@ public class RoleModel : AbstractModel
     {
         if(isInvulnerable) return;
         hp -= damage;
-        if (hp <= 0)
+        if (hp <= 0.0f)
         {
             hp = 0.0f;
         }
@@ -89,7 +89,7 @@ public class RoleModel : AbstractModel
     //检查死亡
     public bool IsDeath()
     {
-        if(hp <= 0) return true;
+        if(hp <= 0.01) return true;
         else return false;
     }
 

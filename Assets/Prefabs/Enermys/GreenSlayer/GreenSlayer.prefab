@@ -44,10 +44,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4275568095027310853}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0.5
-  m_AngularDrag: 0.5
+  m_LinearDamping: 0.5
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -83,8 +83,12 @@ MonoBehaviour:
   damage: 1
   rb: {fileID: 4868172582906062302}
   openTouchDamage: 1
+  forceMode: 0
+  isInvulnerable: 0
+  isBoss: 0
   enermyType: 1
   agent: {fileID: 4096774722050251902}
+  shocked: 0
   propGenerator: {fileID: 8402082390948811459, guid: 126f1227e15d8d546ac9cee34d66f6a9, type: 3}
   canDropProp: 1
   animator: {fileID: 7936099953066504942}
@@ -124,7 +128,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0

@@ -12,6 +12,7 @@ public class Bullet : UncollectableObjectModel
     [SerializeField] private bool velocityModel = true;//是否使用速度模式
     [SerializeField] public Vector3 direction = Vector3.zero;//子弹的飞行方向
     [SerializeField] public Animator animator = null;//子弹的动画器
+    [SerializeField] public BulletMaterialChanger materialChanger = null;
     
     public void SetBulletData(Vector3 direction,bool isPlayerSide = false, float flyTime = 5.0f, float damage = 1.0f, bool resetForce = false,float force = 500.0f)
     {
@@ -25,6 +26,10 @@ public class Bullet : UncollectableObjectModel
     void Start()
     {
         haveFlyTime = 0.0f;//重置已经飞行时间
+        if(materialChanger != null)
+        {
+            materialChanger.ChangeOutLook(GameData.bullet);
+        }
     }
 
     void Update()
@@ -58,7 +63,7 @@ public class Bullet : UncollectableObjectModel
 
     private bool CheckBulletDamageEffective()
     {
-        if(damage <= 0) return false;
+        if(damage <= 0.01) return false;
         return true;
     }
 
@@ -113,8 +118,9 @@ public class Bullet : UncollectableObjectModel
     {
         if(role == null) return false;
         float tempHp = role.GetHp();
+        //子弹伤害为负数时无法造成伤害
         //血量小于等于0的role无法收到伤害
-        if(tempHp <= 0) return false;
+        if(tempHp <= 0.0f && damage <= 0.0f) return false;
         //造成伤害
         role.BeHurt(damage);
         damage -= tempHp;

@@ -110,9 +110,6 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         if(player == null || playerCamera == null) return false;
         List<LevelModel> levels = FindObjectsOfType<LevelModel>().ToList();
         if(levels == null || levels.Count <= 0) return false;
-        //保存当前关卡数据
-        LevelProgressControler.instance.SaveDataToGameData();
-        LevelProgressControler.instance.nowLevelHaveSaved = false;//关卡数据保存状态重置
         bool haveTargetLevel = false;
         uint minLevel = uint.MaxValue;
         LevelModel targetLevelModel = null;
@@ -130,6 +127,7 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
                 break;    
             }
         }
+        
         if(!haveTargetLevel) Debug.LogWarning("[LevelProgressControler]:Not Find Level:{" + levelIndex + "}" + ", Have already jump To First Level");
         if(targetLevelModel == null){Debug.LogWarning("[LevelProgressControler]:Not have Level In this Scene!");return false;}
         //关闭所有Trap
@@ -139,6 +137,10 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         //关闭当前关卡的下一关加载器
         LevelProgressControler.instance?.GetNowLevel()?.GetNextLevelLoader()?.SetOpen(false);
         targetLevelModel.SetPlayerData(player,playerCamera);
+
+        //保存当前关卡数据
+        LevelProgressControler.instance.SaveDataToGameData();
+        LevelProgressControler.instance.nowLevelHaveSaved = false;//关卡数据保存状态重置
         instance?.StartCoroutine(instance?.StartLevel(2.0f));//2.0s后开始关卡,单例启动携程
         return haveTargetLevel;
     }

@@ -58,8 +58,8 @@ public class NextLevelLoader : MonoBehaviour
             isOpen = false;//关闭加载器,防止重复加载
             CloseTrapPart();
             //保存加载数据
-            GameData.SaveSystem.SaveGame();
             LevelProgressControler.LoadLevel(player,cameraMover,nextLevel);//加载下一关
+            GameData.SaveSystem.SaveGame();
         }
     }
 

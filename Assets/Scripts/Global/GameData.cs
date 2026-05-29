@@ -113,7 +113,7 @@ public static class GameData
                     boots = data.boots;
                     weaponUp = data.weaponUp;
                     bullet = data.bullet;
-                    Debug.Log("[GameData SaveSystem]:Read Successful!");
+                    Debug.Log("[GameData SaveSystem]:Read Successful! Save Path:" + loadPath);
                     return true;
                 }
                 catch (System.Exception e)

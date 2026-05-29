@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 4053369933735059246}
   - component: {fileID: 4584346309316000242}
   - component: {fileID: 6396260696962237586}
+  - component: {fileID: 9019306193473432402}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -353,6 +354,7 @@ MonoBehaviour:
   velocityModel: 1
   direction: {x: 1, y: 1, z: 1}
   animator: {fileID: 4584346309316000242}
+  materialChanger: {fileID: 9019306193473432402}
 --- !u!95 &4584346309316000242
 Animator:
   serializedVersion: 7
@@ -405,6 +407,28 @@ MonoBehaviour:
   - {r: 1, g: 0.43081754, b: 0.43081754, a: 0.53333336}
   - {r: 0.5377357, g: 0.6824003, b: 1, a: 0.53333336}
   - {r: 0.99725, g: 1, b: 0.29874206, a: 0.53333336}
+--- !u!114 &9019306193473432402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4445434512041558754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7957b0cd09f6ca24badb5ae82c71c0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletMaterialChanger
+  materialDict:
+    keys: 0000000001000000020000000300000004000000
+    values:
+    - {fileID: 2100000, guid: 0d9306d8a589adb469b61059b3450c7f, type: 2}
+    - {fileID: 2100000, guid: 266b56abf8b4d184ba2b41435df697d6, type: 2}
+    - {fileID: 2100000, guid: a90327e7ed8cef044be71e88de04fd76, type: 2}
+    - {fileID: 2100000, guid: 26fd003f22a861440897c31bbd36104f, type: 2}
+    - {fileID: 2100000, guid: a3e3c4326e0cad3418780ccd5ac071a0, type: 2}
+  changeParts:
+  - {fileID: 1811571333247045116}
 --- !u!1001 &2209376235392723479
 PrefabInstance:
   m_ObjectHideFlags: 0

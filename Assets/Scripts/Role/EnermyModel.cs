@@ -7,6 +7,15 @@ using UnityEngine.AI;
 public class EnermyModel : RoleModel
 {
     //敌人种类
+    [SerializeField] public bool isBoss = false;
+    public bool IsBoss()
+    {
+        return isBoss;
+    }
+    public void SetBoss(bool isBoss)
+    {
+        this.isBoss = isBoss;
+    }
     [SerializeField] public EnermyType enermyType = EnermyType.None;
     //智能体导航器
     [SerializeField] public NavMeshAgent agent = null; 
