@@ -117,4 +117,22 @@ public class LevelModel : AbstractModel
         }
         Debug.Log("[LevelModel]:Set Generators Activate:"+isActivate+" | List Size:"+abstractGenerateLists.Count);
     }
+    [SerializeField] public Transform merchantSalePoint;
+    public void SetMerchantSalePoint(Transform merchantSalePoint)
+    {
+        this.merchantSalePoint = merchantSalePoint;
+    }
+    public Transform GetMerchantSalePoint()
+    {
+        return merchantSalePoint;
+    }
+    [SerializeField] public Transform merchantIdlePoint;
+    public void SetMerchantIdlePoint(Transform merchantIdlePoint)
+    {
+        this.merchantIdlePoint = merchantIdlePoint;
+    }
+    public Transform GetMerchantIdlePoint()
+    {
+        return merchantIdlePoint;
+    }
 }

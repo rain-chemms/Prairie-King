@@ -94,10 +94,15 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
 
         }
     }
-
+    [SerializeField] public Merchant merchantPrefab;
     private void GenerateMerchant()
     {
-
+        Merchant newMerchant = Instantiate(merchantPrefab);
+        newMerchant.SetIdlePlace((Vector3)nowLevel?.GetMerchantIdlePoint().position);
+        newMerchant.SetSalePlace((Vector3)nowLevel?.GetMerchantSalePoint().position);
+        newMerchant.transform.position = newMerchant.GetIdlePlace();//生成位置初始化
+        newMerchant.gameObject.SetActive(true);//激活物体
+        newMerchant.SetSaleState(true);//商店状态打开
     }
     
     public static bool LoadLevel(PlayerModel player,PlayerCameraMover playerCamera,uint levelIndex = 1)
@@ -127,6 +132,8 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         }
         if(!haveTargetLevel) Debug.LogWarning("[LevelProgressControler]:Not Find Level:{" + levelIndex + "}" + ", Have already jump To First Level");
         if(targetLevelModel == null){Debug.LogWarning("[LevelProgressControler]:Not have Level In this Scene!");return false;}
+        //关闭所有Trap
+        instance.nowLevel?.GetNextLevelLoader()?.CloseTrapPart();//关闭所有打开的机关
         //设置玩家数据
         LevelProgressControler.instance.SetNowLevel(targetLevelModel);
         //关闭当前关卡的下一关加载器
@@ -141,6 +148,7 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
     {            
         yield return new WaitForSeconds(time);            
         //激活所有当前关卡的敌人生成器
+        SetTimeLock(false);//解锁时间
         LevelProgressControler.instance.GetNowLevel().SetGeneratorsActivate<EnermyType, EnermyModel>(true);
         //设置BGM
         bool isBoss = LevelProgressControler.instance.GetNowLevel().isBossLevel;

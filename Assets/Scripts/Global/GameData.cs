@@ -70,7 +70,7 @@ public static class GameData
             //游戏文件夹:
             //     SaveFile
             //          SaveData1.json
-            String realPath = Path.Combine(Application.persistentDataPath,savePath,saveName);
+            String realPath = Path.Combine(Application.persistentDataPath,savePath);
             try
             {
                 //写入文件,自动创建对应路径文件夹
@@ -78,7 +78,9 @@ public static class GameData
                 {
                     Directory.CreateDirectory(realPath);
                     Debug.LogWarning("[GameData SaveSystem]:Not Find Save Directory, Directory Created! Path: " + realPath);
-                }
+                }            
+                //添加文件名
+                realPath = Path.Combine(realPath,saveName);
                 File.WriteAllText(realPath, json);
                 Debug.Log("[GameData SaveSystem]:Save Successful! The Save Path:" + realPath);
                 return true;

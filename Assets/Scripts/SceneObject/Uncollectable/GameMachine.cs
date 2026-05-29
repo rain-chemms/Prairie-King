@@ -13,6 +13,7 @@ public class GameMachine : MonoBehaviour
     public static void StartNewGame()
     {
         GameData.ResetData();//重置数据
+        GameData.SaveSystem.SaveGame();//保存游戏数据
         ChapterControler.instance.LoadChapter(GameData.chapter);//加载章节
     }
 

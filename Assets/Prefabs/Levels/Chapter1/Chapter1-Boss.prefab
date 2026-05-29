@@ -408,6 +408,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &3626231702554570403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4175833634045279796}
+  m_Layer: 0
+  m_Name: MerchantIdlePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4175833634045279796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626231702554570403}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 25, y: 0, z: -105}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6533950424801292968}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3651757590627039685
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +681,8 @@ Transform:
   - {fileID: 1095247106943398922}
   - {fileID: 5634932391787476420}
   - {fileID: 1021241727464644073}
+  - {fileID: 3804059306961338968}
+  - {fileID: 4175833634045279796}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!218 &5777262086638182215
@@ -731,7 +764,40 @@ MonoBehaviour:
   cameraAnchor: {fileID: 8172349873679999401}
   playerAnchor: {fileID: 2705601089509813928}
   nextLevelLoader: {fileID: 7265346473724502790}
-  enermyManager: {fileID: 0}
+  enermyManager: {fileID: 677453222292512470}
+  merchantSalePoint: {fileID: 3804059306961338968}
+  merchantIdlePoint: {fileID: 4175833634045279796}
+--- !u!1 &6075678838803185868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3804059306961338968}
+  m_Layer: 0
+  m_Name: MerchantSalePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3804059306961338968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075678838803185868}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 25, y: 0, z: -125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6533950424801292968}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6093161194831669987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,6 +1665,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34e11d8671cb6714eac61dbb11a3da4c, type: 3}
+--- !u!114 &677453222292512470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1766926063251005392, guid: 34e11d8671cb6714eac61dbb11a3da4c, type: 3}
+  m_PrefabInstance: {fileID: 1289065204705181958}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bc24f2f6636294face14c36e36ac86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5634932391787476420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6904265476790121666, guid: 34e11d8671cb6714eac61dbb11a3da4c, type: 3}

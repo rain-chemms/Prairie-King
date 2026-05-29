@@ -114,5 +114,6 @@ public class RoleModel : AbstractModel
                 OnDeath();
             }
         }
+        
     }
 }

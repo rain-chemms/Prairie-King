@@ -7,8 +7,33 @@ using UnityEngine;
 public class Merchant : RoleModel
 {
     [SerializeField] public bool isSale = true;
+    public void SetSaleState(bool isSale)
+    {
+        this.isSale = isSale;
+    }
+    public bool IsSale()
+    {
+        return isSale;
+    }
+
     [SerializeField] public Vector3 salePlace;//售货处,isSale为true时移动到该处并售卖物品
+    public Vector3 GetSalePlace()
+    {
+        return salePlace;
+    }
+    public void SetSalePlace(Vector3 salePlace)
+    {
+        this.salePlace = salePlace;
+    }
     [SerializeField] public Vector3 idlePlace;//闲逛处,isSale为false时收起商品并移动到该处
+    public Vector3 GetIdlePlace()
+    {
+        return idlePlace;
+    }
+    public void SetIdlePlace(Vector3 idlePlace)
+    {
+        this.idlePlace = idlePlace;
+    }
     [SerializeField] public Animator animator;//动画器
     [SerializeField] public Vector3 GoodsStartPosition;//商品起始位置
     [SerializeField] public float goodsInterval = 0.5f;//商品间隔

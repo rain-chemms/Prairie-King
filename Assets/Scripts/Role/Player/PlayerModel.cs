@@ -521,17 +521,38 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,
     {
         //角色死亡后延迟时间之后执行的功能
         yield return new WaitForSeconds(delay);
+        //清除场景中所有的商人
+        Merchant[] merchantModels = FindObjectsOfType<Merchant>();
+        foreach(Merchant merchantModel in merchantModels)
+        {
+            Destroy(merchantModel.gameObject);
+        }
+        //清除场景中所有的场景物品:包括可拾取的+不可拾取的
+        SceneObjectModel[] propModels = FindObjectsOfType<SceneObjectModel>();
+        foreach(SceneObjectModel propModel in propModels)
+        {
+            Destroy(propModel.gameObject);
+        }
         //清除场景中所有的敌人
         EnermyModel[] enermyModels = FindObjectsOfType<EnermyModel>();
         foreach(EnermyModel enermyModel in enermyModels)
         {
             Destroy(enermyModel.gameObject);
         }
+        //清空当前玩家拥有的全部状态
+        foreach(var item in propTimeRemainder.ToList())
+        {
+            propTimeRemainder[item.Key] = 0.0f;
+        }
+        //重新加载玩家数据并将生命值减一
+        uint nowLife = GameData.life - 1;
+        GameData.SaveSystem.LoadGame();
+        GameData.life = nowLife;
+        GameData.SaveSystem.SaveGame();
         //重新加载当前关卡
         PlayerCameraMover cameraMover = FindObjectOfType<PlayerCameraMover>()?.GetComponent<PlayerCameraMover>();
         LevelProgressControler.LoadLevel(this,cameraMover,LevelProgressControler.instance.GetNowLevel().level);
         LevelProgressControler.instance.ResetTimeRecorder();
-        GameData.life -= 1;
         //强制切换玩家MoveLayer的动画
         animator.Play("Idle",0);
         //播放BGM
