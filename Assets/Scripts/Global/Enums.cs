@@ -68,4 +68,8 @@ public enum EnermyType
 {
     None,
     GreenSlayer,
+    GreenGient,
+    GreenHedgehog,
+    Stick,
+    OutLawBoss
 }

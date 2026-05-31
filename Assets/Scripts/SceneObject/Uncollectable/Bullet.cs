@@ -120,7 +120,7 @@ public class Bullet : UncollectableObjectModel
         float tempHp = role.GetHp();
         //子弹伤害为负数时无法造成伤害
         //血量小于等于0的role无法收到伤害
-        if(tempHp <= 0.0f && damage <= 0.0f) return false;
+        if(tempHp <= 0.0f || !CheckBulletDamageEffective()) return false;
         //造成伤害
         role.BeHurt(damage);
         damage -= tempHp;

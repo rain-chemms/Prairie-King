@@ -54,6 +54,8 @@ public class GoodsModel<EnumType> : CollectableObjectModel,IGoodsComponent,EnumG
         // 商品在拾取后销毁自身前的函数
         if(GameData.money < cost) return;
         GameData.money -= cost;
+        //播放商品拾取音效
+        AudioManager.instance?.ChangeCollectClip("GoodsPickUp");
         base.AfterCollect(collectPlayer);
         //商品在拾取后销毁自身
         Destroy(gameObject);

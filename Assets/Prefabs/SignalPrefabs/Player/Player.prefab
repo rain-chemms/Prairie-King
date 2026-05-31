@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 8423435961766443023}
   - component: {fileID: 4759648333463308647}
   - component: {fileID: 293588736778715663}
+  - component: {fileID: 1801348300859239644}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -249,7 +250,6 @@ MonoBehaviour:
   rb: {fileID: 7217200196978266999}
   openTouchDamage: 0
   forceMode: 2
-  maxVelocity: 0.5
   isInvulnerable: 0
   vfxList:
   - {fileID: 5509543059095408227}
@@ -281,6 +281,19 @@ MonoBehaviour:
   boots: 0
   weaponUp: 0
   bullet: 0
+--- !u!114 &1801348300859239644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8971333011517937039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0130649bfeb50284d9024fbca062cd58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoldenFinger
+  inputAction: {fileID: -944628639613478452, guid: 5daef280a84984148b3b3c1bc3d1c6d3, type: 3}
 --- !u!1 &9218704665403319827
 GameObject:
   m_ObjectHideFlags: 0

@@ -844,6 +844,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ed97fd4b9666fd04eb5ed01c50ec91a6, type: 3}
   - {fileID: 8300000, guid: e91122f2923caa746b4abe0b429d717f, type: 3}
   - {fileID: 8300000, guid: 4647e67949f36ca47854b4a3e7ebfbd2, type: 3}
+  - {fileID: 8300000, guid: 66a3e75b5bb52544f8f68d9210b6e2ba, type: 3}
   hitEffect: {fileID: 1082614655537872736}
   hitEffectClips:
   - {fileID: 8300000, guid: 1757bf68fb67b9e44be89dab75142d63, type: 3}

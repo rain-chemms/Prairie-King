@@ -69,6 +69,13 @@ public class EnermyModel : RoleModel
         return (Vector3)targetPlayer?.transform.position;
     }
 
+    public virtual Vector3 FollowPlayer_NotChangeMoveDirection()
+    {
+        Vector3 tar = transform.position;
+        if(targetPlayer == null || targetPlayer.isInvisible) return tar;
+        return (Vector3)targetPlayer?.transform.position;    
+    }
+
     //产生随机道具掉落物
     [SerializeField] public PropGenerator propGenerator = null;//道具生成器
     [SerializeField] public bool canDropProp = true;//是否可以掉落道具
@@ -124,7 +131,7 @@ public class EnermyModel : RoleModel
     protected override void OnDeath()
     {
         DropProp();
-        agent.enabled = false;//死亡后不能移动,关闭智能体导航
+        if(agent!=null) agent.enabled = false;//死亡后不能移动,关闭智能体导航
         base.OnDeath();
     }
 
@@ -148,7 +155,7 @@ public class EnermyModel : RoleModel
     //private Vector3 agent_target = Vector3.zero;
     public virtual void Move_Agent()
     {
-        Vector3 tar = FollowPlayer();
+        Vector3 tar = FollowPlayer_NotChangeMoveDirection();
         if(shocked)
         {
             // 1. 计算从玩家(目标)指向当前角色的方向向量

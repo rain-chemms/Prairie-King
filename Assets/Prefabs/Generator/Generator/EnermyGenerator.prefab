@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5063fa3bbffd97440a6971b231058677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  productManager: {fileID: 0}
   productPrefabs:
   - {fileID: 8913374822965360378, guid: a94f94b0eb32e5949bf7e377a805fb32, type: 3}
+  - {fileID: 7834692081999742799, guid: cdfbfb1ecfae1d540b7a9f65386eec90, type: 3}
 --- !u!114 &311600128337642762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,19 +62,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator: {fileID: 836314201542022951}
-  isActive: 1
+  recordTime: 0
+  isActivate: 0
   isLoop: 1
   isGenerate: 
   timeList:
     keys:
-    - 1
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    values: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
+    - 2
+    - 2.5
+    - 3
+    - 11
+    - 10
+    - 12
+    - 21.5
+    - 20.5
+    - 21
+    - 30
+    - 30.5
+    - 31
+    values: 010000000100000001000000010000000100000003000000010000000300000001000000010000000300000001000000

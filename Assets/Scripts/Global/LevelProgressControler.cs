@@ -36,7 +36,11 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
     {
         return timeRecorder;
     }
-    
+
+    public void SetTimeRecorder(float time)
+    {
+        timeRecorder = time;
+    } 
     [SerializeField] private bool timeLock = false;//关卡计时器是否被锁定
     public void SetTimeLock(bool isLock)
     {
