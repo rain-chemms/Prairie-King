@@ -12,6 +12,23 @@ public class RoleModel : AbstractModel
     
     [SerializeField] public float damage = 1f;//伤害
     [SerializeField] public Rigidbody rb;
+    public virtual void OpenAllCollider()
+    {
+        Collider[] colliders = GetComponents<Collider>();
+        foreach(Collider cld in colliders)
+        {
+            cld.enabled = true;
+        }
+    }
+
+    public virtual void CloseAllCollider()
+    {
+        Collider[] colliders = GetComponents<Collider>();
+        foreach(Collider cld in colliders)
+        {
+            cld.enabled = false;
+        }
+    }
     [SerializeField] public bool openTouchDamage = false;//是否开启接触伤害
     [SerializeField] public ForceMode forceMode = ForceMode.Force;//移动时作用力模式
     //[SerializeField] public float maxVelocity = 100f;//最大速度
@@ -95,7 +112,13 @@ public class RoleModel : AbstractModel
 
     //角色死亡触发函数
     protected virtual void OnDeath()
-    {}
+    {
+        if(rb!=null)
+        {
+            rb.useGravity = false;
+        }
+        CloseAllCollider();//关闭所有碰撞器
+    }
 
     //更新函数
     protected void Update()

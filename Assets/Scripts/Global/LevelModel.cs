@@ -54,6 +54,8 @@ public class LevelModel : AbstractModel
     {
         if(player!=null && cameraMover!=null)
         {
+            if(player.rb != null)
+                player.rb.useGravity = true;//重启重力
             if(playerAnchor != null)
                 player.transform.position = playerAnchor.transform.position;//设置玩家初始位置未角色锚点
             cameraMover.SetTarget(cameraAnchor.transform);//设置相机锚点跟随
