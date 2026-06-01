@@ -3,14 +3,9 @@ using UnityEngine;
 public class OutLawBoosAnimatorEvent : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] public OutLawBoss enermy1Object;
+    public void DestroyGameObject()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Destroy(enermy1Object.gameObject);
     }
 }

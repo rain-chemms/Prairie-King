@@ -6,17 +6,17 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MoveAvatar
+  m_Name: PlayerShootAvatar
   m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Elements:
   - m_Path: 
     m_Weight: 1
   - m_Path: Armature
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Hips
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Hips/LeftUpLeg
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Hips/LeftUpLeg/LeftLeg
     m_Weight: 1
   - m_Path: Armature/Hips/LeftUpLeg/LeftLeg/LeftFoot
@@ -28,7 +28,7 @@ AvatarMask:
   - m_Path: Armature/Hips/LeftUpLeg/LeftLeg/LeftFoot/LeftToeBase/LeftToeBase_end/LeftToeBase_end_end
     m_Weight: 1
   - m_Path: Armature/Hips/RightUpLeg
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Hips/RightUpLeg/RightLeg
     m_Weight: 1
   - m_Path: Armature/Hips/RightUpLeg/RightLeg/RightFoot
@@ -40,9 +40,9 @@ AvatarMask:
   - m_Path: Armature/Hips/RightUpLeg/RightLeg/RightFoot/RightToeBase/RightToeBase_end/RightToeBase_end_end
     m_Weight: 1
   - m_Path: Armature/Hips/Spine
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Hips/Spine/Spine1
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Hips/Spine/Spine1/Spine2
     m_Weight: 1
   - m_Path: Armature/Hips/Spine/Spine1/Spine2/LeftShoulder
@@ -58,7 +58,7 @@ AvatarMask:
   - m_Path: Armature/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHand_end/LeftHand_end_end
     m_Weight: 1
   - m_Path: Armature/Hips/Spine/Spine1/Spine2/Neck
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Hips/Spine/Spine1/Spine2/Neck/Head
     m_Weight: 1
   - m_Path: Armature/Hips/Spine/Spine1/Spine2/Neck/Head/Head_end
@@ -66,7 +66,7 @@ AvatarMask:
   - m_Path: Armature/Hips/Spine/Spine1/Spine2/Neck/Head/Head_end/Head_end_end
     m_Weight: 1
   - m_Path: Armature/Hips/Spine/Spine1/Spine2/RightShoulder
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Hips/Spine/Spine1/Spine2/RightShoulder/RightArm
     m_Weight: 1
   - m_Path: Armature/Hips/Spine/Spine1/Spine2/RightShoulder/RightArm/RightForeArm

@@ -59,8 +59,7 @@ public class GreenHedgehog : EnermyModel
     public void DropStick()
     {
         //生成尖刺
-        EnermyModel stick = Instantiate(stickPrefab);
-        stick.transform.SetPositionAndRotation(rb.transform.position,Quaternion.Euler(0,0,0));
+        EnermyModel stick = Instantiate(stickPrefab,transform.position,transform.rotation);
     }
 
     //存活时间检查
@@ -82,6 +81,7 @@ public class GreenHedgehog : EnermyModel
         CloseTouchDamage();//关闭接触伤害
         //将自身血量设置为零或者时激活放置尖刺的动画
         animator.SetTrigger("DropStick");//在动画事件中放置尖刺
+        DropStick();
     }
 
     private bool CheckDirTimeChange()
@@ -105,11 +105,14 @@ public class GreenHedgehog : EnermyModel
         //Move_Agent();
         if(canMove) 
         {
+            /*
             if(nowAgentMove)
             {
                 Move_Agent();
             }
             else Move();
+            */
+            Move_Agent();
         }
         else 
         {

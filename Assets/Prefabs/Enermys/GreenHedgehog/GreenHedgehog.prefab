@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7217732083300317445}
   m_Layer: 6
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Enermy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -146,7 +146,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -169,7 +169,7 @@ CapsuleCollider:
     m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 1309866495668202258}
   m_Layer: 6
   m_Name: BackPackStick
-  m_TagString: Untagged
+  m_TagString: Enermy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,6 +304,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 608f79c1080ea0246820543f93038fb1, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 608f79c1080ea0246820543f93038fb1, type: 3}
+      propertyPath: m_TagString
+      value: Enermy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -467,6 +471,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -4258411891960909470, guid: 73204a96f422c5b4d808eba80b7c6fad, type: 3}
+      propertyPath: m_TagString
+      value: Enermy
+      objectReference: {fileID: 0}
     - target: {fileID: -4128383740851021839, guid: 73204a96f422c5b4d808eba80b7c6fad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98021
@@ -627,6 +635,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73204a96f422c5b4d808eba80b7c6fad, type: 3}
+      propertyPath: m_TagString
+      value: Enermy
+      objectReference: {fileID: 0}
     - target: {fileID: 931444521364983944, guid: 73204a96f422c5b4d808eba80b7c6fad, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -634,6 +646,10 @@ PrefabInstance:
     - target: {fileID: 1268305377301752715, guid: 73204a96f422c5b4d808eba80b7c6fad, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1268305377301752715, guid: 73204a96f422c5b4d808eba80b7c6fad, type: 3}
+      propertyPath: m_TagString
+      value: Enermy
       objectReference: {fileID: 0}
     - target: {fileID: 1321549067906412316, guid: 73204a96f422c5b4d808eba80b7c6fad, type: 3}
       propertyPath: m_Layer

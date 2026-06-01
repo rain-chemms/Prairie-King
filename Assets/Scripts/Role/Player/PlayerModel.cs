@@ -527,6 +527,12 @@ public class PlayerModel : RoleModel,PlayerValueCaculator,PropTimeRecorder,
         {
             Destroy(merchantModel.gameObject);
         }
+        ////清除场景中所有的子弹
+        Bullet[] bulletModels = FindObjectsOfType<Bullet>();
+        foreach(Bullet bulletModel in bulletModels)
+        {
+            Destroy(bulletModel.gameObject);
+        }
         //清除场景中所有的场景物品:可拾取的
         CollectableObjectModel[] propModels = FindObjectsOfType<CollectableObjectModel>();
         foreach(CollectableObjectModel propModel in propModels)

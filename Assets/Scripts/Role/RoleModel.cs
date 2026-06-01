@@ -115,6 +115,7 @@ public class RoleModel : AbstractModel
     {
         if(rb!=null)
         {
+            openTouchDamage = false;
             rb.useGravity = false;
         }
         CloseAllCollider();//关闭所有碰撞器

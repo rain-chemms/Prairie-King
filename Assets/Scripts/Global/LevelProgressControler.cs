@@ -74,10 +74,14 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         {
             if (!nowLevel.isBossLevel && !timeLock)
                 timeRecorder += Time.deltaTime;
-            if (timeRecorder > nowLevel.GetPersistTime())
+            if (timeRecorder > nowLevel.GetPersistTime())//只进行时间检测
             {
                 //超时后关闭当前关卡的敌人生成器
                 nowLevel.SetGeneratorsActivate<EnermyType, EnermyModel>(false);
+            }
+            
+            if (timeRecorder > nowLevel.GetPersistTime() || (bool)nowLevel?.isBossLevel)//进行时间和Boss关检测检测,Boss关只需要打败Boss即可
+            {        
                 //发出相应的响应
                 if (nowLevel?.GetEnermyManager()?.GetList().ToList().Count() <= 0)
                 {
@@ -94,8 +98,11 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
                     }
                     AudioManager.instance.StopBgm();
                 }
+                else
+                {
+                    AudioManager.instance.PlayBgm();    
+                }
             }
-
         }
     }
     [SerializeField] public Merchant merchantPrefab;
@@ -141,7 +148,9 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
         //关闭当前关卡的下一关加载器
         LevelProgressControler.instance?.GetNowLevel()?.GetNextLevelLoader()?.SetOpen(false);
         targetLevelModel.SetPlayerData(player,playerCamera);
-
+        //刷新敌人生成器的状态
+        LevelProgressControler.instance?.GetNowLevel()?.FreshAllEnermyGenerateListListState();
+        
         //保存当前关卡数据
         LevelProgressControler.instance.SaveDataToGameData();
         LevelProgressControler.instance.nowLevelHaveSaved = false;//关卡数据保存状态重置

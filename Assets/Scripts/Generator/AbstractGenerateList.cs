@@ -11,6 +11,14 @@ public class AbstractGenerateList<Source,Product> : MonoBehaviour where Source :
     //关联的生成器
     [SerializeField] public AbstractGenerator<Source,Product> generator; 
     [SerializeField] protected float recordTime;
+    public void SetRecordTime(float time)
+    {
+        recordTime = time;
+    }
+    public float GetRecordTime()
+    {
+        return recordTime;
+    }
     [SerializeField] public bool isActivate = true;//是否激活
     public void SetActivate(bool isActivate)
     {
@@ -26,7 +34,7 @@ public class AbstractGenerateList<Source,Product> : MonoBehaviour where Source :
     /// /正常来说应该把是否生成的列表与序列化字典放在检查器的同一列
     [SerializeField] private List<bool> isGenerate = new List<bool>();//记录是否已经生成
     //刷新检查表
-    private void ResetIsGenerateList()
+    public void ResetIsGenerateList()
     {
         if(timeList == null) return;
         isGenerate.Clear();

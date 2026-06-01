@@ -54,8 +54,10 @@ public class LevelModel : AbstractModel
     {
         if(player!=null && cameraMover!=null)
         {
-            if(player.rb != null)
+            if(player.rb != null){
                 player.rb.useGravity = true;//重启重力
+                player.OpenAllCollider();//激活所有碰撞器
+            }
             if(playerAnchor != null)
                 player.transform.position = playerAnchor.transform.position;//设置玩家初始位置未角色锚点
             cameraMover.SetTarget(cameraAnchor.transform);//设置相机锚点跟随
@@ -104,7 +106,7 @@ public class LevelModel : AbstractModel
         }
     }
 
-    //设置特定类型的生成器的可见性
+    //设置特定类型的生成器的激活状态:自动进行检测
     public void SetGeneratorsActivate<Source,Product>(bool isActivate) //传入参数代表要关闭的生成器的类别
         where Source : Enum 
         where Product : MonoBehaviour
@@ -136,5 +138,21 @@ public class LevelModel : AbstractModel
     public Transform GetMerchantIdlePoint()
     {
         return merchantIdlePoint;
+    }
+    [SerializeField] public List<EnermyGenerateList> enermyGenerateListList;
+    public List<EnermyGenerateList> GetEnermyGenerateList()
+    {
+        return enermyGenerateListList;
+    }
+    public void FreshAllEnermyGenerateListListState()
+    {
+        if(enermyGenerateListList == null || enermyGenerateListList.Count <= 0) return;
+        foreach(EnermyGenerateList generator in enermyGenerateListList)
+        {
+            //重置生成器时间并将其开启
+            generator?.ResetTime();
+            //generator?.SetActivate(true);
+            generator?.ResetIsGenerateList();
+        }
     }
 }
