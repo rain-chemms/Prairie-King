@@ -7,6 +7,15 @@
             "id": "fec86afb-9872-4cc2-825d-41f1e549b2bb",
             "actions": [
                 {
+                    "name": "MoveTouch",
+                    "type": "Value",
+                    "id": "d467a427-2b85-4448-8056-9c0770c4334e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "MoveUp",
                     "type": "Value",
                     "id": "1bf37ad4-41aa-4907-86b0-0bc3acd766d0",
@@ -38,6 +47,15 @@
                     "type": "Value",
                     "id": "2713b82d-9b57-48d8-9a58-42bdfc9d1b19",
                     "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ShootTouch",
+                    "type": "Value",
+                    "id": "0e45a881-54e7-43f4-99ad-21234341f71b",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -102,30 +120,8 @@
                 },
                 {
                     "name": "",
-                    "id": "93e1bf57-850c-4bdb-ab2c-b5621918cb80",
-                    "path": "<Touchscreen>/delta/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b42703d1-c0f6-46e3-b030-af11e3284f91",
                     "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "af21cc94-a6ae-44a2-84e2-b4d841e63be9",
-                    "path": "<Touchscreen>/delta/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -146,30 +142,8 @@
                 },
                 {
                     "name": "",
-                    "id": "7aaa743f-7dcd-4ff5-8a26-9c9d3f13b318",
-                    "path": "<Touchscreen>/delta/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "36af83aa-3906-4fb4-9fa0-df727b002aca",
                     "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "54fcc13d-1a2c-49fc-85a5-776920472d0b",
-                    "path": "<Touchscreen>/delta/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -229,6 +203,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "UseProp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f8ad811a-d371-4d3c-8101-3bcdc30a01ff",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "565f2cb3-2628-4c2d-af7e-f58894bdc452",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootTouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

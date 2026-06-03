@@ -20,12 +20,8 @@ public class PhoneControlUI : MonoBehaviour
 
     void Start()
     {
-        //如果为移动端平台,则激活该物体
-        #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
-            EffectPhoneControlUI(true);
-        #else 
-            EffectPhoneControlUI(false);
-        #endif
+        //初始场景不激活
+        EffectPhoneControlUI(false);
     }
 
     public void EffectPhoneControlUI(bool display)

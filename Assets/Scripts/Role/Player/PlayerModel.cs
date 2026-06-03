@@ -34,6 +34,7 @@ public class PlayerModel : RoleModel, PlayerValueCaculator, PropTimeRecorder,
         return playerControl;
     }
     //移动监听
+    
     private InputAction moveRight;
     private InputAction moveLeft;
     private InputAction moveUp;
@@ -44,6 +45,9 @@ public class PlayerModel : RoleModel, PlayerValueCaculator, PropTimeRecorder,
     private InputAction leftShoot;
     private InputAction rightShoot;
     //道具使用监听
+    //移动端监听
+    private InputAction moveTouch;
+    private InputAction shootTouch;
     private InputAction useProp;
     //玩家的所有属性都从GameData中获取
     //操纵和保存也直接修改GameData
@@ -62,6 +66,10 @@ public class PlayerModel : RoleModel, PlayerValueCaculator, PropTimeRecorder,
         leftShoot = playerControl.FindAction("LeftShoot");
         rightShoot = playerControl.FindAction("RightShoot");
         useProp = playerControl.FindAction("UseProp");
+        #if UNITY_ANDROID || UNITY_EDITOR || UNITY_IOS
+            moveTouch = playerControl.FindAction("MoveTouch");
+            shootTouch = playerControl.FindAction("ShootTouch");
+        #endif
         if (moveDown == null || moveLeft == null || moveRight == null || moveUp == null || upShoot == null || downShoot == null || leftShoot == null || rightShoot == null || useProp == null) return false;
         return true;
     }
@@ -136,6 +144,26 @@ public class PlayerModel : RoleModel, PlayerValueCaculator, PropTimeRecorder,
         {
             SetShootDirection(new Vector2(0.0f, shootDirection.y));
         };
+        
+        #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
+        moveTouch.performed += (context) =>
+        {
+            SetMoveDirection(context.ReadValue<Vector2>().normalized);
+        };
+        moveTouch.canceled += (context) =>
+        {
+            SetMoveDirection(Vector2.zero);
+        };
+
+        shootTouch.performed += (context) =>
+        {
+            SetShootDirection(context.ReadValue<Vector2>().normalized);
+        };
+        shootTouch.canceled += (context) =>
+        {
+            SetShootDirection(Vector2.zero);
+        };
+        #endif
         //使用道具
         useProp.performed += (context) =>
         {

@@ -168,7 +168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 4bb4f26a7e20f0c429d49e970b04a70f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 4bb4f26a7e20f0c429d49e970b04a70f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -494,7 +494,7 @@ RectTransform:
   m_GameObject: {fileID: 6120174979272318696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6369430102893291599}
@@ -525,14 +525,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.22352941}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: d993773f5f1605a41bc7ad173dc23355, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -551,10 +551,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.OnScreen.OnScreenStick
-  m_MovementRange: 200
+  m_MovementRange: 180
   m_DynamicOriginRange: 100
-  m_ControlPath: 
-  m_Behaviour: 0
+  m_ControlPath: <Gamepad>/rightStick
+  m_Behaviour: 1
   m_UseIsolatedInputActions: 0
   m_PointerDownAction:
     m_Name: 
@@ -602,8 +602,8 @@ RectTransform:
   m_GameObject: {fileID: 8589400997331908027}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2653358934525937084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -633,14 +633,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.22352941}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 984f444f10301604f929774f13f2953c, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -659,9 +659,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.OnScreen.OnScreenStick
-  m_MovementRange: 200
+  m_MovementRange: 180
   m_DynamicOriginRange: 100
-  m_ControlPath: <Touchscreen>/delta
+  m_ControlPath: <Gamepad>/leftStick
   m_Behaviour: 1
   m_UseIsolatedInputActions: 0
   m_PointerDownAction:

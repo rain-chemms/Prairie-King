@@ -42,6 +42,10 @@ public class ChapterControler : MonoBehaviour
     //加载场景后加载关卡
     private void AfterChapterSceneLoad()
     {
+        //打开控制器
+        #if UNITY_IOS || UNITY_ANDROID || UNITY_EDITOR
+        PhoneControlUI.instance.EffectPhoneControlUI(true);
+        #endif
         //获取玩家
         PlayerModel player = FindObjectOfType<PlayerModel>()?.GetComponent<PlayerModel>();
         if(player == null)
