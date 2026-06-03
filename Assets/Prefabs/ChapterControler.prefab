@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee29e51a43d4f484aa0420e0c8c809f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChapterControler
+  playerPrefab: {fileID: 4759648333463308647, guid: be6a37cad0aa8914389a7da6a9c62525, type: 3}
+  cameraMoverPrefab: {fileID: 8923096102170838128, guid: a82ef330e06373b4eb7614f15b0847ab, type: 3}

@@ -3,6 +3,12 @@ using UnityEngine;
 //单例模式
 public class GameDataUI : MonoBehaviour
 {
+    public void TriggerThePlayerUseProp()
+    {
+        PlayerModel playerModel = FindFirstObjectByType<PlayerModel>();
+        playerModel.UseProp();
+    }
+    
     public static GameDataUI instance;
     void Awake()
     {

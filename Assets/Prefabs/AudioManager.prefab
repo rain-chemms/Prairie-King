@@ -862,3 +862,4 @@ MonoBehaviour:
   deathEffect: {fileID: 301534553643224052}
   deathEffectClips:
   - {fileID: 8300000, guid: 673f0decd84a74943a1c29ff3e0229bf, type: 3}
+  - {fileID: 8300000, guid: 74675fb9bbb376240a8f117e4429cf90, type: 3}

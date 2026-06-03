@@ -163,6 +163,7 @@ public class LevelProgressControler : MonoBehaviour//,MerchantGenerator
     {            
         yield return new WaitForSeconds(time);            
         //激活所有当前关卡的敌人生成器
+        ResetTimeRecorder();
         SetTimeLock(false);//解锁时间
         LevelProgressControler.instance.GetNowLevel().SetGeneratorsActivate<EnermyType, EnermyModel>(true);
         //设置BGM

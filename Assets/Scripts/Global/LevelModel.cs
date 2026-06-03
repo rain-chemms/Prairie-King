@@ -56,8 +56,12 @@ public class LevelModel : AbstractModel
         {
             if(player.rb != null){
                 player.rb.useGravity = true;//重启重力
-                player.OpenAllCollider();//激活所有碰撞器
             }
+            player.GetPlayerControl()?.Enable();
+            player.hp = 1.0f;
+            player.SetHaveTriggerDeath(false);
+            player.OpenAllCollider();//激活所有碰撞器
+            
             if(playerAnchor != null)
                 player.transform.position = playerAnchor.transform.position;//设置玩家初始位置未角色锚点
             cameraMover.SetTarget(cameraAnchor.transform);//设置相机锚点跟随

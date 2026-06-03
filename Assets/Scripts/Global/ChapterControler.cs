@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class ChapterControler : MonoBehaviour
 {
     public static ChapterControler instance;
+    [SerializeField] public PlayerModel playerPrefab;
+    [SerializeField] public PlayerCameraMover cameraMoverPrefab;
     void Awake()
     {
         if (instance == null)
@@ -42,8 +44,16 @@ public class ChapterControler : MonoBehaviour
     {
         //获取玩家
         PlayerModel player = FindObjectOfType<PlayerModel>()?.GetComponent<PlayerModel>();
+        if(player == null)
+        {
+            player = Instantiate(playerPrefab,null);
+        }
         //获取摄像机移动器
         PlayerCameraMover cameraMover = FindObjectOfType<PlayerCameraMover>()?.GetComponent<PlayerCameraMover>();
+        if(cameraMover == null)
+        {
+            cameraMover = Instantiate(cameraMoverPrefab,null);
+        }
         Debug.Log("[ChapterControler] Set Player: " + player?.name + "| CameraMover: " + cameraMover?.name);
         //加载相应关卡
         LevelProgressControler.LoadLevel(player,cameraMover,GameData.level);

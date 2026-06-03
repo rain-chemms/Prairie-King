@@ -128,6 +128,14 @@ public class RoleModel : AbstractModel
     } 
     
     protected bool haveTriggerDeath = false;
+    public bool GetHaveTriggerDeath()
+    {
+        return haveTriggerDeath;
+    }
+    public void SetHaveTriggerDeath(bool isHave)
+    {
+        haveTriggerDeath = isHave;
+    }
     protected virtual void CheckDeath()
     {
         if(IsDeath())

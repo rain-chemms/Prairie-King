@@ -261,6 +261,7 @@ MonoBehaviour:
   bullet: {fileID: 4053369933735059246, guid: 5851f885b08b9a940ba8cb0454b6cef5, type: 3}
   isInvisible: 0
   isZombieState: 0
+  propPrefab: {fileID: 4545207546038662041, guid: ced706416c5e0584d9a79d354a054067, type: 3}
 --- !u!114 &293588736778715663
 MonoBehaviour:
   m_ObjectHideFlags: 0
