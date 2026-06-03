@@ -13,6 +13,7 @@ public class OutLawBoss : EnermyModel
     [SerializeField] private bool canShoot = true;//是否可以攻击
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private BossDrop bossDropPrefab;
     new void Start()
     {
         base.Start();
@@ -72,8 +73,6 @@ public class OutLawBoss : EnermyModel
         if(!IsDeath()) Move();
     }
 
-    
-
     public void DirectionChange()
     {
         if(canMove)
@@ -96,6 +95,8 @@ public class OutLawBoss : EnermyModel
         animator?.SetTrigger("Death");
         canMove = false;
         canShoot = false;
+        //产生BossDrop可拾取道具,用于触发下一章节的加载
+        BossDrop drop = Instantiate(bossDropPrefab, transform.position, Quaternion.identity);
         base.OnDeath();
     }
 }

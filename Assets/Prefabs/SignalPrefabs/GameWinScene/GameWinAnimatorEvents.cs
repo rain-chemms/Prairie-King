@@ -1,7 +1,13 @@
 using UnityEngine;
+using TMPro;
 
-public class GameOverAnimatorEvents : MonoBehaviour
+public class GameWinAnimatorEvents : MonoBehaviour
 {
+    [SerializeField] public TMP_Text showText;
+    public void ChangeTextContent(string content)
+    {
+        showText.text = content;
+    }
     public void ChangeSceneToMainMenu()
     {
         SceneLoader.instance?.Load("MainMenu",()=>{

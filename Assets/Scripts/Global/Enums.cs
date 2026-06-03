@@ -5,6 +5,7 @@ using UnityEngine;
 //章节类型:目前设置两章
 public enum ChapterType
 {
+    None,
     Chapter_1,
     Chapter_2,
     Chapter_3

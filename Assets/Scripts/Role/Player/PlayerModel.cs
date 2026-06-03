@@ -640,6 +640,7 @@ public class PlayerModel : RoleModel, PlayerValueCaculator, PropTimeRecorder,
     {
         //角色死亡后延迟时间之前执行的功能
         //播放死亡音效
+        AudioManager.instance?.StopBgm();
         AudioManager.instance?.ChangeDeathEffectClip("Death1");
         AudioManager.instance?.TriggerDeathEffect();
     }

@@ -3998,19 +3998,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7739577487741838544, guid: 8d9a10bd20b2a874f957f9fa9ad7b456, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7739577487741838544, guid: 8d9a10bd20b2a874f957f9fa9ad7b456, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7739577487741838544, guid: 8d9a10bd20b2a874f957f9fa9ad7b456, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7771190748121501024, guid: 8d9a10bd20b2a874f957f9fa9ad7b456, type: 3}
       propertyPath: m_Name
       value: GameDataUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7771190748121501024, guid: 8d9a10bd20b2a874f957f9fa9ad7b456, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8265213669239026349, guid: 8d9a10bd20b2a874f957f9fa9ad7b456, type: 3}
       propertyPath: 'propTextureDict.values.Array.data[8]'

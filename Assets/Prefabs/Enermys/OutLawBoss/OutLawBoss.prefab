@@ -106,6 +106,7 @@ MonoBehaviour:
   canShoot: 1
   bulletPrefab: {fileID: 4053369933735059246, guid: 5851f885b08b9a940ba8cb0454b6cef5, type: 3}
   bulletSpeed: 30
+  bossDropPrefab: {fileID: 7887270751498037333, guid: 94c989e6ec592ab4593d0e1048475d20, type: 3}
 --- !u!54 &5864379755154035041
 Rigidbody:
   m_ObjectHideFlags: 0
